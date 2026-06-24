@@ -89,8 +89,7 @@
           if (enfant.href === currentPage) a.classList.add('active');
           if (enfant.href === 'civilisations.html' || enfant.href === 'religions.html' ||
               enfant.href === 'actualite.html' || enfant.href === 'morphoscope.html' ||
-              enfant.href === 'miroiroscope.html' || enfant.href === 'ressources.html' ||
-              enfant.href === 'personnages.html') {
+              enfant.href === 'miroiroscope.html' || enfant.href === 'ressources.html') {
             a.classList.add('bientot');
             a.setAttribute('title', 'Bientôt disponible');
           }
