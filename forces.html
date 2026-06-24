@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les 7 Forces — M7FA</title>
+<meta name="description" content="Les sept forces archétypiques fondamentales : Chaos, Ordre, Volonté, Lien, Savoir, Épreuve, Transcendance.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--or); }
+
+  /* HERO */
+  .page-hero {
+    padding: 140px 24px 80px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.75;
+    margin-bottom: 24px;
+  }
+
+  .page-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    margin-bottom: 32px;
+  }
+
+  .page-intro {
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-muted);
+    line-height: 1.8;
+  }
+
+  /* SEPARATEUR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
+
+  /* NAVIGATION FORCES */
+  .forces-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+
+  .forces-nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 1px solid var(--bordure);
+    transition: all 0.3s;
+  }
+
+  .forces-nav a:hover {
+    color: var(--or);
+    border-color: var(--or);
+  }
+
+  /* FORCE SECTION */
+  .force-section {
+    max-width: 900px;
+    margin: 0 auto 120px;
+    padding: 0 24px;
+    scroll-margin-top: 100px;
+  }
+
+  .force-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .force-inner.reverse {
+    grid-template-columns: 1fr 280px;
+  }
+
+  /* GLYPHE */
+  .force-glyphe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .force-inner.reverse .force-glyphe {
+    order: 2;
+  }
+
+  .glyphe-cercle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid var(--bordure);
+    background: var(--obsidienne-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: border-color 0.4s;
+  }
+
+  .glyphe-cercle:hover {
+    border-color: rgba(201,168,76,0.5);
+  }
+
+  .glyphe-cercle img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+  }
+
+  .force-numero {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--or);
+    opacity: 0.5;
+  }
+
+  /* FORCE CONTENU */
+  .force-contenu {
+    padding-top: 8px;
+  }
+
+  .force-inner.reverse .force-contenu {
+    order: 1;
+    text-align: right;
+  }
+
+  .force-nom {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .force-accroche {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .force-mots {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .force-inner.reverse .force-mots {
+    justify-content: flex-end;
+  }
+
+  .force-mot {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or-sombre);
+    padding: 5px 12px;
+    border: 1px solid rgba(138,107,42,0.3);
+  }
+
+  .force-texte {
+    font-size: clamp(15px, 1.7vw, 18px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+  }
+
+  .force-texte + .force-texte { margin-top: 16px; }
+
+  /* DIVISEUR ENTRE FORCES */
+  .force-diviseur {
+    max-width: 900px;
+    margin: 0 auto 120px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .force-diviseur-line { flex: 1; height: 1px; background: var(--bordure); }
+  .force-diviseur-dot { width: 6px; height: 6px; background: var(--or); border-radius: 50%; opacity: 0.4; }
+
+  /* NAVIGATION BAS */
+  .nav-pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+    border-top: 1px solid var(--bordure);
+    padding-top: 40px;
+  }
+
+  .nav-page-lien {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-page-lien:hover { color: var(--or); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo { font-size: 20px; color: var(--or); margin-bottom: 16px; display: block; }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+
+    .force-inner,
+    .force-inner.reverse {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .force-inner.reverse .force-glyphe { order: 0; }
+    .force-inner.reverse .force-contenu { order: 0; text-align: left; }
+    .force-inner.reverse .force-mots { justify-content: flex-start; }
+
+    .glyphe-cercle { width: 160px; height: 160px; }
+    .glyphe-cercle img { width: 100px; height: 100px; }
+    .force-glyphe { align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">M7FA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="modele.html">Le modèle</a></li>
+    <li><a href="forces.html" class="active">Les 7 Forces</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <p class="page-eyebrow">Architecture du modèle</p>
+  <h1 class="page-titre">Les 7 Forces Archétypiques</h1>
+  <p class="page-intro">
+    Sept dynamiques fondamentales qui traversent toute réalité humaine.<br>
+    Ni bonnes ni mauvaises — elles agissent, entrent en tension, s'équilibrent, se déforment.
+  </p>
+</div>
+
+<!-- NAVIGATION RAPIDE -->
+<div class="forces-nav">
+  <a href="#chaos">Chaos</a>
+  <a href="#ordre">Ordre</a>
+  <a href="#volonte">Volonté</a>
+  <a href="#lien">Lien</a>
+  <a href="#savoir">Savoir</a>
+  <a href="#epreuve">Épreuve</a>
+  <a href="#transcendance">Transcendance</a>
+</div>
+
+<!-- 1. CHAOS -->
+<div class="force-section" id="chaos">
+  <div class="force-inner">
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="chaos.png" alt="Glyphe de la force Chaos">
+      </div>
+      <span class="force-numero">Force 01</span>
+    </div>
+    <div class="force-contenu">
+      <h2 class="force-nom">Chaos</h2>
+      <p class="force-accroche">Ce qui ouvre, fissure les cadres établis et rend l'émergence possible.</p>
+      <div class="force-mots">
+        <span class="force-mot">Origine</span>
+        <span class="force-mot">Mouvement</span>
+        <span class="force-mot">Potentiel</span>
+        <span class="force-mot">Imprévisibilité</span>
+      </div>
+      <p class="force-texte">Le Chaos n'est pas le désordre au sens négatif du terme. Il est la condition première de toute émergence — ce qui précède la forme, ce qui contient toutes les formes possibles.</p>
+      <p class="force-texte">Là où Chaos domine, les structures se fissurent, les certitudes vacillent, mais l'espace du possible s'agrandit. Sans Chaos, aucune transformation n'est possible. Sans Ordre pour le contenir, il dissout ce qui tient.</p>
+    </div>
+  </div>
+</div>
+
+<div class="force-diviseur"><div class="force-diviseur-line"></div><div class="force-diviseur-dot"></div><div class="force-diviseur-line"></div></div>
+
+<!-- 2. ORDRE -->
+<div class="force-section" id="ordre">
+  <div class="force-inner reverse">
+    <div class="force-contenu">
+      <h2 class="force-nom">Ordre</h2>
+      <p class="force-accroche">Ce qui structure, organise et stabilise dans la durée.</p>
+      <div class="force-mots">
+        <span class="force-mot">Structure</span>
+        <span class="force-mot">Cohérence</span>
+        <span class="force-mot">Clarté</span>
+        <span class="force-mot">Stabilité</span>
+      </div>
+      <p class="force-texte">L'Ordre est la force qui donne forme au possible. Il crée les cadres, les règles, les institutions — tout ce qui permet à une réalité collective de se reproduire dans le temps.</p>
+      <p class="force-texte">Lorsqu'il est en équilibre, l'Ordre protège et libère. Lorsqu'il devient hégémonique, il étouffe l'émergence, fige ce qui devrait rester vivant, et finit par appeler le Chaos comme réponse.</p>
+    </div>
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="ordre.png" alt="Glyphe de la force Ordre">
+      </div>
+      <span class="force-numero">Force 02</span>
+    </div>
+  </div>
+</div>
+
+<div class="force-diviseur"><div class="force-diviseur-line"></div><div class="force-diviseur-dot"></div><div class="force-diviseur-line"></div></div>
+
+<!-- 3. VOLONTE -->
+<div class="force-section" id="volonte">
+  <div class="force-inner">
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="volonte.png" alt="Glyphe de la force Volonté">
+      </div>
+      <span class="force-numero">Force 03</span>
+    </div>
+    <div class="force-contenu">
+      <h2 class="force-nom">Volonté</h2>
+      <p class="force-accroche">Ce qui engage, tranche et oriente l'action.</p>
+      <div class="force-mots">
+        <span class="force-mot">Élan</span>
+        <span class="force-mot">Décision</span>
+        <span class="force-mot">Courage</span>
+        <span class="force-mot">Affirmation</span>
+      </div>
+      <p class="force-texte">La Volonté est la force de l'engagement. Elle ne décrit pas ce qu'on pense — elle désigne ce qu'on fait, ce vers quoi on se dirige résolument malgré l'incertitude.</p>
+      <p class="force-texte">Là où la Volonté manque, les projets restent en suspens, les crises s'étirent faute de décision. Là où elle excède, elle peut devenir domination, écrasant ce qui résiste plutôt que de composer avec.</p>
+    </div>
+  </div>
+</div>
+
+<div class="force-diviseur"><div class="force-diviseur-line"></div><div class="force-diviseur-dot"></div><div class="force-diviseur-line"></div></div>
+
+<!-- 4. LIEN -->
+<div class="force-section" id="lien">
+  <div class="force-inner reverse">
+    <div class="force-contenu">
+      <h2 class="force-nom">Lien</h2>
+      <p class="force-accroche">Ce qui relie, attache et permet aux ensembles humains de tenir.</p>
+      <div class="force-mots">
+        <span class="force-mot">Relation</span>
+        <span class="force-mot">Empathie</span>
+        <span class="force-mot">Appartenance</span>
+        <span class="force-mot">Coopération</span>
+      </div>
+      <p class="force-texte">Le Lien est la force de la cohésion — ce qui fait qu'un groupe reste un groupe, qu'une relation dure, qu'un tissu social ne se déchire pas. Il opère dans l'invisible : la confiance, la reconnaissance mutuelle, le sentiment d'appartenir.</p>
+      <p class="force-texte">Quand le Lien se rompt, les structures peuvent subsister mais elles sonnent creux. Quand il se comprime sous la pression d'autres forces, c'est souvent le premier signe d'une crise profonde.</p>
+    </div>
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="lien.png" alt="Glyphe de la force Lien">
+      </div>
+      <span class="force-numero">Force 04</span>
+    </div>
+  </div>
+</div>
+
+<div class="force-diviseur"><div class="force-diviseur-line"></div><div class="force-diviseur-dot"></div><div class="force-diviseur-line"></div></div>
+
+<!-- 5. SAVOIR -->
+<div class="force-section" id="savoir">
+  <div class="force-inner">
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="savoir.png" alt="Glyphe de la force Savoir">
+      </div>
+      <span class="force-numero">Force 05</span>
+    </div>
+    <div class="force-contenu">
+      <h2 class="force-nom">Savoir</h2>
+      <p class="force-accroche">Ce qui éclaire, distingue et rend le monde intelligible.</p>
+      <div class="force-mots">
+        <span class="force-mot">Compréhension</span>
+        <span class="force-mot">Discernement</span>
+        <span class="force-mot">Transmission</span>
+        <span class="force-mot">Lucidité</span>
+      </div>
+      <p class="force-texte">Le Savoir est la force qui rend le réel lisible. Il ne se réduit pas à l'accumulation de données — il désigne la capacité à distinguer, à nommer juste, à transmettre ce qui a été compris.</p>
+      <p class="force-texte">Lorsque le Savoir est en tension avec la Volonté, on agit sans comprendre. Lorsqu'il se sépare du Lien, il peut devenir froid, instrumental, coupé de ce qui fait le sens humain des choses.</p>
+    </div>
+  </div>
+</div>
+
+<div class="force-diviseur"><div class="force-diviseur-line"></div><div class="force-diviseur-dot"></div><div class="force-diviseur-line"></div></div>
+
+<!-- 6. EPREUVE -->
+<div class="force-section" id="epreuve">
+  <div class="force-inner reverse">
+    <div class="force-contenu">
+      <h2 class="force-nom">Épreuve</h2>
+      <p class="force-accroche">Ce qui confronte aux limites et oblige à transformer.</p>
+      <div class="force-mots">
+        <span class="force-mot">Transformation</span>
+        <span class="force-mot">Limite</span>
+        <span class="force-mot">Résilience</span>
+        <span class="force-mot">Initiation</span>
+      </div>
+      <p class="force-texte">L'Épreuve est la force du seuil — ce moment où une réalité est poussée jusqu'à sa limite et ne peut plus continuer comme avant. Elle ne détruit pas : elle oblige à une transformation que rien d'autre n'aurait pu provoquer.</p>
+      <p class="force-texte">Les crises, les ruptures, les passages difficiles sont souvent des manifestations de l'Épreuve à l'œuvre. Ce qui en sort transformé ne revient pas à l'état antérieur — il en émerge différent, ou s'effondre.</p>
+    </div>
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="epreuve.png" alt="Glyphe de la force Épreuve">
+      </div>
+      <span class="force-numero">Force 06</span>
+    </div>
+  </div>
+</div>
+
+<div class="force-diviseur"><div class="force-diviseur-line"></div><div class="force-diviseur-dot"></div><div class="force-diviseur-line"></div></div>
+
+<!-- 7. TRANSCENDANCE -->
+<div class="force-section" id="transcendance">
+  <div class="force-inner">
+    <div class="force-glyphe">
+      <div class="glyphe-cercle">
+        <img src="transcendance.png" alt="Glyphe de la force Transcendance">
+      </div>
+      <span class="force-numero">Force 07</span>
+    </div>
+    <div class="force-contenu">
+      <h2 class="force-nom">Transcendance</h2>
+      <p class="force-accroche">Ce qui appelle un dépassement et reconfigure les horizons.</p>
+      <div class="force-mots">
+        <span class="force-mot">Dépassement</span>
+        <span class="force-mot">Unité</span>
+        <span class="force-mot">Sens</span>
+        <span class="force-mot">Horizon</span>
+      </div>
+      <p class="force-texte">La Transcendance est la seule force hors-axe du modèle. Elle ne s'oppose à aucune autre — elle les dépasse toutes. Elle désigne cette dimension qui tire une réalité vers quelque chose de plus grand qu'elle-même.</p>
+      <p class="force-texte">Elle peut prendre des formes très diverses : le sacré, l'idéal collectif, le sens donné à une épreuve, la vision qui mobilise au-delà de l'intérêt immédiat. Là où elle est absente, les systèmes humains finissent par tourner à vide.</p>
+    </div>
+  </div>
+</div>
+
+<!-- NAVIGATION BAS -->
+<div class="nav-pages">
+  <a href="modele.html" class="nav-page-lien">← Le modèle</a>
+  <a href="index.html" class="nav-page-lien">Accueil →</a>
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>
