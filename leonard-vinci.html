@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Léonard de Vinci — Lecture M7FA</title>
+<meta name="description" content="Une lecture archétypique de Léonard de Vinci à travers le Modèle des 7 Forces. Savoir insatiable, Chaos créateur, Ordre comme ambition jamais satisfaite.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .page-hero {
+    padding: 110px 24px 60px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .fil-ariane {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fil-ariane a { color: var(--texte-muted); text-decoration: none; transition: color 0.2s; }
+  .fil-ariane a:hover { color: var(--or); }
+  .fil-ariane span { opacity: 0.4; }
+
+  .fiche-type {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .page-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .page-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 1.6vw, 17px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-muted);
+    margin-bottom: 32px;
+  }
+
+  .page-accroche {
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.85;
+    border-left: 2px solid var(--or);
+    padding-left: 24px;
+  }
+
+  .forces-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 40px 0 0;
+  }
+
+  .force-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border: 1px solid var(--bordure);
+    color: var(--or);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
+
+  .contenu {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .bloc { margin-bottom: 72px; }
+
+  .bloc-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .bloc-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  .bloc-texte {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .accent { color: var(--or-clair); font-style: italic; }
+
+  .lecture-forces {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 32px 0;
+    border: 1px solid var(--bordure);
+  }
+
+  .lecture-force {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    background: var(--obsidienne-2);
+    transition: background 0.3s;
+  }
+
+  .lecture-force:hover { background: var(--obsidienne-3); }
+
+  .lecture-force-nom {
+    padding: 24px 20px;
+    border-right: 1px solid var(--bordure);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--or);
+    display: flex;
+    align-items: center;
+  }
+
+  .lecture-force-texte {
+    padding: 24px 24px;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.75;
+  }
+
+  .revelation {
+    background: var(--obsidienne-3);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--or);
+    padding: 40px 48px;
+    margin: 32px 0 0;
+  }
+
+  .revelation-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(14px, 1.8vw, 17px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  .revelation p {
+    font-size: clamp(15px, 1.7vw, 18px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .revelation p:last-child { margin-bottom: 0; }
+
+  /* TRILOGIE */
+  .trilogie {
+    border: 1px solid var(--bordure);
+    overflow: hidden;
+    margin: 32px 0 0;
+  }
+
+  .trilogie-titre {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--bordure);
+    background: var(--obsidienne-2);
+  }
+
+  .trilogie-grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .trilogie-col {
+    padding: 24px 22px;
+    border-right: 1px solid var(--bordure);
+  }
+
+  .trilogie-col:last-child { border-right: none; }
+
+  .trilogie-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .trilogie-force {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--or-sombre);
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+
+  .trilogie-texte {
+    font-size: clamp(13px, 1.4vw, 15px);
+    font-weight: 300;
+    color: var(--texte-muted);
+    line-height: 1.7;
+  }
+
+  .trilogie-col.actif .trilogie-nom { color: var(--or-clair); }
+  .trilogie-col.actif { background: rgba(201,168,76,0.03); }
+
+  .aujourdhui {
+    background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+    border: 1px solid var(--bordure);
+    padding: 48px;
+    margin: 32px 0 0;
+    text-align: center;
+  }
+
+  .aujourdhui p {
+    font-size: clamp(16px, 1.9vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .aujourdhui p:last-child { margin-bottom: 0; }
+
+  .aujourdhui .conclusion {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.1em;
+    color: var(--or);
+  }
+
+  .nav-fiches {
+    margin: 80px 0 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--bordure);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-fiche-lien {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-fiche-lien:hover { color: var(--or); }
+
+  .nav-fiche-retour {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--or);
+    text-decoration: none;
+    border: 1px solid var(--bordure);
+    padding: 10px 20px;
+    transition: all 0.3s;
+  }
+
+  .nav-fiche-retour:hover { background: rgba(201,168,76,0.08); }
+
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo { font-size: 20px; color: var(--or); margin-bottom: 16px; display: block; }
+
+  @media (max-width: 640px) {
+    .lecture-force { grid-template-columns: 1fr; }
+    .lecture-force-nom { border-right: none; border-bottom: 1px solid var(--bordure); padding-bottom: 12px; }
+    .revelation { padding: 28px 24px; }
+    .aujourdhui { padding: 32px 20px; }
+    .trilogie-grille { grid-template-columns: 1fr; }
+    .trilogie-col { border-right: none; border-bottom: 1px solid var(--bordure); }
+    .trilogie-col:last-child { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="fil-ariane">
+    <a href="index.html">Accueil</a>
+    <span>›</span>
+    <a href="personnages.html">Personnages</a>
+    <span>›</span>
+    Léonard de Vinci
+  </div>
+  <p class="fiche-type">Lecture archétypique · Personnage</p>
+  <h1 class="page-titre">Léonard de Vinci</h1>
+  <p class="page-dates">1452 – 1519 · Florence, Milan, Amboise</p>
+  <p class="page-accroche">
+    Il a peint la Joconde et La Cène. Il a conçu des machines volantes, des chars de combat, des systèmes hydrauliques. Il a disséqué des cadavres pour comprendre le corps humain. Il a laissé des milliers de pages de notes — et des dizaines d'œuvres inachevées.<br><br>
+    Léonard de Vinci n'est pas seulement un génie. Il est une configuration archétypique particulièrement lisible.
+  </p>
+  <div class="forces-badges">
+    <span class="force-badge">Savoir</span>
+    <span class="force-badge">Chaos</span>
+    <span class="force-badge">Ordre</span>
+  </div>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<div class="contenu">
+
+  <!-- L'HOMME -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">L'homme</p>
+    <h2 class="bloc-titre">Une curiosité sans frontières</h2>
+    <p class="bloc-texte">
+      Leonardo naît en 1452 près de Vinci, fils naturel d'un notaire et d'une paysanne. Il n'aura pas accès à l'université — le latin, la philosophie scolastique, les cursus formels lui sont fermés. Il apprendra autrement : par l'observation directe, le dessin, l'expérimentation.
+    </p>
+    <p class="bloc-texte">
+      À quinze ans, il entre dans l'atelier de Verrocchio à Florence. Il y apprend la peinture, la sculpture, la mécanique. Mais très tôt, il déborde de toutes parts. Il dessine des rochers, des remous d'eau, des visages, des ailes d'oiseaux. Il prend des notes sur tout — <span class="accent">des milliers de pages, écrites de droite à gauche, en miroir.</span>
+    </p>
+    <p class="bloc-texte">
+      Toute sa vie, il sera sollicité par les princes et les mécènes — les Sforza à Milan, puis les Médicis, puis le roi de France François Ier qui l'accueillera à Amboise jusqu'à sa mort. Partout, on l'admire. Partout, il laisse des œuvres inachevées. Non par paresse — par débordement. Il commence toujours autre chose.
+    </p>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+  <!-- LECTURE ARCHETYPIQUE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Lecture archétypique</p>
+    <h2 class="bloc-titre">Ce que le M7FA observe</h2>
+    <p class="bloc-texte">
+      Léonard est souvent lu comme un génie incompris, un homme en avance sur son temps. Le M7FA propose une lecture différente : celle d'une tension structurelle entre trois forces qui ne trouvent jamais d'équilibre stable.
+    </p>
+
+    <div class="lecture-forces">
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Savoir</div>
+        <div class="lecture-force-texte">C'est la force centrale de Léonard — et elle est d'une intensité rare. Il ne veut pas seulement savoir. Il veut comprendre le mécanisme de toutes choses : comment l'eau tourbillonne, comment l'oiseau vole, comment la lumière frappe un visage, comment le cœur pompe le sang. Le Savoir chez lui n'est pas une accumulation — c'est une quête permanente du principe sous-jacent.</div>
+      </div>
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Chaos</div>
+        <div class="lecture-force-texte">Léonard ne finit pas. Ce n'est pas un défaut de caractère — c'est le signe d'une force Chaos qui génère en permanence de nouvelles directions, de nouvelles questions, de nouveaux projets. Chaque réponse ouvre dix nouvelles interrogations. Le Chaos n'est pas destructeur ici — il est créateur. Mais il empêche l'achèvement. La Joconde elle-même n'a peut-être jamais été considérée comme terminée par son auteur.</div>
+      </div>
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Ordre</div>
+        <div class="lecture-force-texte">L'ambition de Léonard est de tout ordonner — de trouver les lois universelles qui gouvernent la nature, d'écrire le grand traité de peinture, de classer ses observations, de produire une œuvre totale. L'Ordre est son horizon, jamais atteint. Il rêve de synthèse. Mais le Chaos l'en empêche sans cesse. Cette tension entre l'aspiration à l'Ordre et la puissance du Chaos est peut-être la clé de toute sa trajectoire.</div>
+      </div>
+    </div>
+
+    <div class="revelation">
+      <p class="revelation-titre">Ce que cette configuration révèle</p>
+      <p>Léonard de Vinci illustre une tension que le M7FA permet de nommer précisément : un Savoir intense, porté par un Chaos créateur, en quête d'un Ordre qui ne se réalise jamais complètement. Cette configuration produit une œuvre extraordinaire — et une vie de frustration silencieuse.</p>
+      <p>Ses carnets regorgent de projets non aboutis, de traités annoncés jamais écrits, de machines conçues jamais construites. Ce n'est pas l'échec d'un homme. C'est la conséquence logique d'une configuration où le Chaos déborde toujours l'Ordre — et où le Savoir, au lieu de réduire les questions, les multiplie.</p>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+  <!-- TRILOGIE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">La trilogie de démonstration</p>
+    <h2 class="bloc-titre">Trois configurations, trois imaginaires</h2>
+    <p class="bloc-texte">
+      Ces trois fiches forment ensemble la démonstration la plus claire de ce que le M7FA peut offrir : trois existences humaines radicalement différentes, éclairées par des configurations de forces distinctes.
+    </p>
+
+    <div class="trilogie">
+      <p class="trilogie-titre">Ce que chaque trajectoire montre</p>
+      <div class="trilogie-grille">
+        <div class="trilogie-col">
+          <p class="trilogie-nom">François d'Assise</p>
+          <p class="trilogie-force">Épreuve · Lien · Transcendance</p>
+          <p class="trilogie-texte">La transformation intérieure. Comment une vie bascule et se reconfigure entièrement.</p>
+        </div>
+        <div class="trilogie-col">
+          <p class="trilogie-nom">Jeanne d'Arc</p>
+          <p class="trilogie-force">Volonté · Transcendance · Ordre</p>
+          <p class="trilogie-texte">L'engagement absolu. Comment une conviction devient une force historique — et son coût.</p>
+        </div>
+        <div class="trilogie-col actif">
+          <p class="trilogie-nom">Léonard de Vinci</p>
+          <p class="trilogie-force">Savoir · Chaos · Ordre</p>
+          <p class="trilogie-texte">La créativité sous tension. Comment une curiosité exceptionnelle produit une œuvre — et une insatisfaction permanente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+  <!-- ET AUJOURD'HUI -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Et aujourd'hui ?</p>
+    <h2 class="bloc-titre">Ce que cette trajectoire nous dit</h2>
+    <p class="bloc-texte">
+      Nous ne sommes pas Léonard de Vinci. Peu d'entre nous peindront la Joconde ou concevront des machines volantes au XVe siècle.
+    </p>
+    <p class="bloc-texte">
+      Pourtant, la configuration de Léonard parle à tous ceux qui ont vécu cette tension entre une curiosité insatiable et le sentiment de ne jamais aller au bout des choses. Entre l'aspiration à produire une œuvre cohérente et la multiplication des directions possibles. Entre le désir d'Ordre et la puissance du Chaos intérieur.
+    </p>
+    <p class="bloc-texte">
+      Le M7FA ne dit pas que cette tension est un problème à résoudre. Il dit qu'elle est une configuration — reconnaissable, observable, et porteuse d'une dynamique propre. La comprendre peut changer la manière dont on la vit.
+    </p>
+
+    <div class="aujourdhui">
+      <p>Léonard de Vinci n'a pas échoué à finir ses œuvres.<br>
+      <em>Il a vécu une configuration dans laquelle l'achèvement n'était structurellement pas possible — parce que le Chaos générait toujours plus vite que l'Ordre ne pouvait contenir.</em></p>
+      <p>La question que sa trajectoire nous pose :<br>
+      <em>Quand le Savoir et le Chaos sont nos forces dominantes, comment trouver la forme d'Ordre qui leur correspond — sans les éteindre ?</em></p>
+      <p class="conclusion">C'est à cette question que le M7FA cherche à aider chacun à répondre pour lui-même.</p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="nav-fiches">
+    <a href="jeanne-arc.html" class="nav-fiche-lien">← Jeanne d'Arc</a>
+    <a href="personnages.html" class="nav-fiche-retour">Tous les personnages →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>

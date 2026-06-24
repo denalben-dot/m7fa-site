@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeanne d'Arc — Lecture M7FA</title>
+<meta name="description" content="Une lecture archétypique de Jeanne d'Arc à travers le Modèle des 7 Forces. Volonté absolue, Transcendance comme moteur, Épreuve comme destin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  .page-hero {
+    padding: 110px 24px 60px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .fil-ariane {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fil-ariane a { color: var(--texte-muted); text-decoration: none; transition: color 0.2s; }
+  .fil-ariane a:hover { color: var(--or); }
+  .fil-ariane span { opacity: 0.4; }
+
+  .fiche-type {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .page-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 5.5vw, 56px);
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .page-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 1.6vw, 17px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-muted);
+    margin-bottom: 32px;
+    letter-spacing: 0.04em;
+  }
+
+  .page-accroche {
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.85;
+    border-left: 2px solid var(--or);
+    padding-left: 24px;
+  }
+
+  .forces-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 40px 0 0;
+  }
+
+  .force-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border: 1px solid var(--bordure);
+    color: var(--or);
+    background: rgba(201,168,76,0.05);
+  }
+
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
+
+  .contenu {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .bloc { margin-bottom: 72px; }
+
+  .bloc-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .bloc-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  .bloc-texte {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .accent { color: var(--or-clair); font-style: italic; }
+
+  .lecture-forces {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 32px 0;
+    border: 1px solid var(--bordure);
+  }
+
+  .lecture-force {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    background: var(--obsidienne-2);
+    transition: background 0.3s;
+  }
+
+  .lecture-force:hover { background: var(--obsidienne-3); }
+
+  .lecture-force-nom {
+    padding: 24px 20px;
+    border-right: 1px solid var(--bordure);
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--or);
+    display: flex;
+    align-items: center;
+  }
+
+  .lecture-force-texte {
+    padding: 24px 24px;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.75;
+  }
+
+  .revelation {
+    background: var(--obsidienne-3);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--or);
+    padding: 40px 48px;
+    margin: 32px 0 0;
+  }
+
+  .revelation-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(14px, 1.8vw, 17px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  .revelation p {
+    font-size: clamp(15px, 1.7vw, 18px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .revelation p:last-child { margin-bottom: 0; }
+
+  /* CONTRASTE AVEC FRANCOIS */
+  .contraste {
+    border: 1px solid var(--bordure);
+    margin: 32px 0 0;
+    overflow: hidden;
+  }
+
+  .contraste-titre {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--bordure);
+    background: var(--obsidienne-2);
+  }
+
+  .contraste-grille {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .contraste-col {
+    padding: 24px 28px;
+  }
+
+  .contraste-col:first-child {
+    border-right: 1px solid var(--bordure);
+  }
+
+  .contraste-nom {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+  }
+
+  .contraste-texte {
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 300;
+    color: var(--texte-muted);
+    line-height: 1.75;
+  }
+
+  .aujourdhui {
+    background: linear-gradient(135deg, rgba(201,168,76,0.04) 0%, transparent 60%);
+    border: 1px solid var(--bordure);
+    padding: 48px;
+    margin: 32px 0 0;
+    text-align: center;
+  }
+
+  .aujourdhui p {
+    font-size: clamp(16px, 1.9vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .aujourdhui p:last-child { margin-bottom: 0; }
+
+  .aujourdhui .conclusion {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.1em;
+    color: var(--or);
+  }
+
+  .nav-fiches {
+    margin: 80px 0 40px;
+    padding-top: 40px;
+    border-top: 1px solid var(--bordure);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .nav-fiche-lien {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-fiche-lien:hover { color: var(--or); }
+
+  .nav-fiche-retour {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--or);
+    text-decoration: none;
+    border: 1px solid var(--bordure);
+    padding: 10px 20px;
+    transition: all 0.3s;
+  }
+
+  .nav-fiche-retour:hover { background: rgba(201,168,76,0.08); }
+
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo { font-size: 20px; color: var(--or); margin-bottom: 16px; display: block; }
+
+  @media (max-width: 640px) {
+    .lecture-force { grid-template-columns: 1fr; }
+    .lecture-force-nom { border-right: none; border-bottom: 1px solid var(--bordure); padding-bottom: 12px; }
+    .revelation { padding: 28px 24px; }
+    .aujourdhui { padding: 32px 20px; }
+    .contraste-grille { grid-template-columns: 1fr; }
+    .contraste-col:first-child { border-right: none; border-bottom: 1px solid var(--bordure); }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-hero">
+  <div class="fil-ariane">
+    <a href="index.html">Accueil</a>
+    <span>›</span>
+    <a href="personnages.html">Personnages</a>
+    <span>›</span>
+    Jeanne d'Arc
+  </div>
+  <p class="fiche-type">Lecture archétypique · Personnage</p>
+  <h1 class="page-titre">Jeanne d'Arc</h1>
+  <p class="page-dates">vers 1412 – 1431 · France</p>
+  <p class="page-accroche">
+    Une jeune paysanne de dix-sept ans qui convainc un roi, commande une armée et retourne le cours d'une guerre.<br>
+    Puis est brûlée vive à dix-neuf ans.<br>
+    Peu de trajectoires humaines concentrent autant de forces en si peu de temps.
+  </p>
+  <div class="forces-badges">
+    <span class="force-badge">Volonté</span>
+    <span class="force-badge">Transcendance</span>
+    <span class="force-badge">Ordre</span>
+    <span class="force-badge">Épreuve</span>
+  </div>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<div class="contenu">
+
+  <!-- L'HOMME -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">L'histoire</p>
+    <h2 class="bloc-titre">Une trajectoire en trois actes</h2>
+    <p class="bloc-texte">
+      Jehanne naît vers 1412 à Domrémy, village lorrain, dans une famille de paysans modestes. La France est alors dévastée par la guerre de Cent Ans — les Anglais occupent Paris, le nord du pays est perdu, le roi Charles VII est un souverain sans couronne, sans légitimité reconnue.
+    </p>
+    <p class="bloc-texte">
+      Vers treize ans, Jeanne commence à entendre des voix — celles de saint Michel, sainte Catherine, sainte Marguerite. Elles lui transmettent une mission : <span class="accent">chasser les Anglais et faire sacrer le roi à Reims.</span> Elle n'en parle à personne pendant des années. Puis, à dix-sept ans, elle agit.
+    </p>
+    <p class="bloc-texte">
+      Elle traverse la France en guerre pour rejoindre le dauphin. Elle le convainc — on ne sait pas comment exactement. Elle prend la tête d'une armée, libère Orléans en neuf jours, conduit Charles VII jusqu'à Reims pour son sacre. En moins d'un an, elle a renversé le cours de la guerre.
+    </p>
+    <p class="bloc-texte">
+      Puis elle est capturée, vendue aux Anglais, jugée pour hérésie. Le procès dure des mois. Elle résiste seule, sans avocat, face à des dizaines de théologiens. Elle est condamnée et brûlée à Rouen le 30 mai 1431. Elle a dix-neuf ans.
+    </p>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+  <!-- LECTURE ARCHETYPIQUE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Lecture archétypique</p>
+    <h2 class="bloc-titre">Ce que le M7FA observe</h2>
+    <p class="bloc-texte">
+      La trajectoire de Jeanne est souvent lue comme un mystère — comment une paysanne sans formation militaire a-t-elle pu accomplir cela ? Le M7FA ne résout pas le mystère. Il observe la configuration de forces qui le rend possible.
+    </p>
+
+    <div class="lecture-forces">
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Volonté</div>
+        <div class="lecture-force-texte">C'est la force dominante chez Jeanne — et elle est d'une intensité rare. Elle ne négocie pas, ne temporise pas, ne recule pas. Face au roi hésitant, face aux généraux sceptiques, face aux juges hostiles, la Volonté reste intacte. Ce n'est pas de l'obstination — c'est une orientation absolue vers un objectif unique, maintenue contre tout obstacle.</div>
+      </div>
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Transcendance</div>
+        <div class="lecture-force-texte">Les voix que Jeanne entend ne sont pas, dans la lecture M7FA, un objet de croyance ou d'incrédulité. Elles sont le signe d'une force de Transcendance qui la dépasse et l'oriente. Ce qui est remarquable, c'est que cette Transcendance ne l'isole pas du monde — elle l'y propulse avec une intensité décuplée. C'est l'inverse du mystique solitaire.</div>
+      </div>
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Ordre</div>
+        <div class="lecture-force-texte">Jeanne n'est pas une révolutionnaire. Elle veut restaurer l'ordre légitime — le roi à Reims, la France unifiée, l'autorité royale reconnue. L'Ordre est la finalité de son action, même si les moyens pour y parvenir sont chaotiques. C'est une tension centrale de sa trajectoire : utiliser le désordre de la guerre pour rétablir l'ordre du royaume.</div>
+      </div>
+      <div class="lecture-force">
+        <div class="lecture-force-nom">Épreuve</div>
+        <div class="lecture-force-texte">Le procès est l'Épreuve ultime. Seule, sans soutien, confrontée à des théologiens qui retournent ses propres mots contre elle, Jeanne tient pendant des mois. L'Épreuve ici ne débouche pas sur une transformation intérieure visible — elle révèle une nature. Ce que le M7FA observe : l'Épreuve ne change pas Jeanne. Elle l'expose dans toute sa cohérence.</div>
+      </div>
+    </div>
+
+    <div class="revelation">
+      <p class="revelation-titre">Ce que cette configuration révèle</p>
+      <p>Chez François d'Assise, l'Épreuve ouvre une transformation profonde — il entre dans la captivité comme jeune ambitieux, il en sort comme autre chose. Chez Jeanne, la trajectoire est inverse : la Volonté et la Transcendance sont présentes dès le début, pleinement formées. L'Épreuve ne la transforme pas — elle la révèle.</p>
+      <p>Ce contraste est l'un des plus pédagogiques que le M7FA puisse offrir : deux trajectoires où la Transcendance et l'Épreuve jouent un rôle central, mais dans des ordres et des dynamiques radicalement différents. La configuration n'est pas la même — les forces ne sont pas les mêmes.</p>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+  <!-- CONTRASTE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Mise en perspective</p>
+    <h2 class="bloc-titre">François et Jeanne — deux configurations</h2>
+    <p class="bloc-texte">
+      Ces deux fiches ne sont pas indépendantes. Elles forment une paire pédagogique : deux trajectoires du même siècle, toutes deux portées par la Transcendance, mais structurées différemment.
+    </p>
+
+    <div class="contraste">
+      <p class="contraste-titre">Comparaison des configurations</p>
+      <div class="contraste-grille">
+        <div class="contraste-col">
+          <p class="contraste-nom">François d'Assise</p>
+          <p class="contraste-texte">L'Épreuve précède et rend possible la Volonté. La transformation est le cœur de la trajectoire. Le Lien s'élargit à tous les vivants. La Transcendance reconfigure une existence entière.</p>
+        </div>
+        <div class="contraste-col">
+          <p class="contraste-nom">Jeanne d'Arc</p>
+          <p class="contraste-texte">La Volonté précède et structure tout le reste. Pas de transformation visible — une révélation progressive. L'Ordre comme finalité politique. La Transcendance comme moteur d'une action dans le monde.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+  <!-- ET AUJOURD'HUI -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Et aujourd'hui ?</p>
+    <h2 class="bloc-titre">Ce que cette trajectoire nous dit</h2>
+    <p class="bloc-texte">
+      Nous ne livrons pas de guerres de Cent Ans. Peu d'entre nous entendrons des voix nous confier une mission nationale.
+    </p>
+    <p class="bloc-texte">
+      Pourtant, la configuration de Jeanne parle à ceux qui ont vécu l'expérience d'une conviction absolue — cette certitude intérieure qu'il faut agir, maintenant, dans une direction précise, malgré l'incompréhension de l'entourage. Cette Volonté portée par quelque chose qui dépasse l'intérêt personnel.
+    </p>
+    <p class="bloc-texte">
+      Le M7FA n'évalue pas si cette conviction est fondée. Il observe ce qu'elle produit — et ce qu'elle coûte. Car Jeanne paie le prix maximum. La question que sa trajectoire pose n'est pas celle du sacrifice. C'est celle de la cohérence.
+    </p>
+
+    <div class="aujourdhui">
+      <p>Jeanne d'Arc n'a jamais dévié.<br>
+      Pas face au roi. Pas face aux généraux. Pas face aux juges.<br>
+      <em>Ce niveau de cohérence entre une conviction intérieure et une action dans le monde est l'une des choses les plus rares — et les plus coûteuses — que le M7FA puisse observer.</em></p>
+      <p>La question que sa trajectoire nous pose :<br>
+      <em>Quand une Volonté est portée par une Transcendance, jusqu'où peut-elle — doit-elle — aller ?</em></p>
+      <p class="conclusion">Le M7FA ne répond pas. Il aide à poser la question plus clairement.</p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="nav-fiches">
+    <a href="francois-assise.html" class="nav-fiche-lien">← François d'Assise</a>
+    <a href="personnages.html" class="nav-fiche-retour">Tous les personnages →</a>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>
