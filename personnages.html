@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Personnages — Applications M7FA</title>
-<meta name="description" content="Lectures archétypiques de personnages historiques à travers le Modèle des 7 Forces. François d'Assise, Jeanne d'Arc et d'autres à venir.">
+<meta name="description" content="Lectures archétypiques de personnages historiques à travers le Modèle des 7 Forces. François d'Assise, Jeanne d'Arc, Léonard de Vinci.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
@@ -34,7 +34,6 @@
     overflow-x: hidden;
   }
 
-  /* HERO */
   .page-hero {
     padding: 110px 24px 72px;
     max-width: 780px;
@@ -53,12 +52,7 @@
     gap: 10px;
   }
 
-  .fil-ariane a {
-    color: var(--texte-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
+  .fil-ariane a { color: var(--texte-muted); text-decoration: none; transition: color 0.2s; }
   .fil-ariane a:hover { color: var(--or); }
   .fil-ariane span { opacity: 0.4; }
 
@@ -100,7 +94,6 @@
     max-width: 580px;
   }
 
-  /* SEPARATEUR */
   .sep {
     display: flex;
     align-items: center;
@@ -112,9 +105,8 @@
   .sep-line { flex: 1; height: 1px; background: var(--bordure); }
   .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
 
-  /* GRILLE FICHES */
   .contenu {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 0 24px 100px;
   }
@@ -131,12 +123,11 @@
 
   .fiches-grille {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2px;
     margin-bottom: 80px;
   }
 
-  /* CARTE ACTIVE */
   .fiche-carte {
     background: var(--obsidienne-2);
     border: 1px solid var(--bordure);
@@ -159,11 +150,7 @@
     transition: height 0.3s;
   }
 
-  .fiche-carte:hover {
-    background: var(--obsidienne-3);
-    border-color: rgba(201,168,76,0.4);
-  }
-
+  .fiche-carte:hover { background: var(--obsidienne-3); border-color: rgba(201,168,76,0.4); }
   .fiche-carte:hover::before { height: 100%; }
 
   .fiche-type {
@@ -187,7 +174,6 @@
   }
 
   .fiche-dates {
-    font-family: 'Cormorant Garamond', serif;
     font-size: 14px;
     font-style: italic;
     color: var(--texte-muted);
@@ -234,23 +220,13 @@
 
   .fiche-carte:hover .fiche-lire { gap: 14px; }
 
-  /* CARTE BIENTOT */
   .fiche-bientot {
     background: var(--obsidienne);
     border: 1px solid rgba(201,168,76,0.08);
     display: flex;
     flex-direction: column;
     padding: 36px 32px;
-    opacity: 0.5;
-  }
-
-  .fiche-bientot-label {
-    font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--texte-muted);
-    margin-bottom: 16px;
+    opacity: 0.4;
   }
 
   .fiche-bientot-nom {
@@ -270,39 +246,20 @@
     margin-bottom: 20px;
   }
 
-  .fiche-bientot-forces {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .fiche-bientot-force {
-    font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--texte-muted);
-    padding: 4px 10px;
-    border: 1px solid rgba(154,144,128,0.2);
-    opacity: 0.5;
-  }
-
   .bientot-badge {
-    margin-top: auto;
     font-family: 'Cinzel', serif;
     font-size: 9px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--texte-muted);
     opacity: 0.5;
+    margin-top: auto;
   }
 
-  /* METHODE */
   .methode {
     background: var(--obsidienne-3);
     border: 1px solid var(--bordure);
     padding: 40px 48px;
-    margin-top: 20px;
   }
 
   .methode-titre {
@@ -321,7 +278,6 @@
     line-height: 1.85;
   }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--bordure);
     padding: 48px 24px;
@@ -343,7 +299,6 @@
 </head>
 <body>
 
-<!-- HERO -->
 <div class="page-hero">
   <div class="fil-ariane">
     <a href="index.html">Accueil</a>
@@ -366,11 +321,10 @@
 
 <div class="contenu">
 
-  <p class="section-label">Fiches disponibles et à venir</p>
+  <p class="section-label">Trilogie de démonstration</p>
 
   <div class="fiches-grille">
 
-    <!-- FRANCOIS D'ASSISE — actif -->
     <a href="francois-assise.html" class="fiche-carte">
       <p class="fiche-type">Lecture archétypique</p>
       <h2 class="fiche-nom">François d'Assise</h2>
@@ -385,34 +339,39 @@
       <p class="fiche-lire">Lire la fiche →</p>
     </a>
 
-    <!-- JEANNE D'ARC — bientôt -->
-    <div class="fiche-bientot">
-      <p class="fiche-bientot-label">Prochainement</p>
-      <h2 class="fiche-bientot-nom">Jeanne d'Arc</h2>
-      <p class="fiche-bientot-dates">1412 – 1431 · France</p>
-      <div class="fiche-bientot-forces">
-        <span class="fiche-bientot-force">Volonté</span>
-        <span class="fiche-bientot-force">Transcendance</span>
-        <span class="fiche-bientot-force">Épreuve</span>
-        <span class="fiche-bientot-force">Ordre</span>
+    <a href="jeanne-arc.html" class="fiche-carte">
+      <p class="fiche-type">Lecture archétypique</p>
+      <h2 class="fiche-nom">Jeanne d'Arc</h2>
+      <p class="fiche-dates">vers 1412 – 1431 · France</p>
+      <p class="fiche-accroche">Une paysanne de dix-sept ans qui convainc un roi et retourne le cours d'une guerre. Puis est brûlée vive à dix-neuf. Peu de trajectoires concentrent autant de forces en si peu de temps.</p>
+      <div class="fiche-forces">
+        <span class="fiche-force">Volonté</span>
+        <span class="fiche-force">Transcendance</span>
+        <span class="fiche-force">Ordre</span>
+        <span class="fiche-force">Épreuve</span>
       </div>
-      <p class="bientot-badge" style="margin-top: 24px;">En préparation ○</p>
-    </div>
+      <p class="fiche-lire">Lire la fiche →</p>
+    </a>
 
-    <!-- SLOT 3 — vide -->
-    <div class="fiche-bientot" style="opacity:0.25;">
-      <p class="fiche-bientot-label">À venir</p>
-      <h2 class="fiche-bientot-nom" style="opacity:0.4;">Prochain personnage</h2>
-      <p class="bientot-badge" style="margin-top: 24px;">○</p>
-    </div>
+    <a href="leonard-vinci.html" class="fiche-carte">
+      <p class="fiche-type">Lecture archétypique</p>
+      <h2 class="fiche-nom">Léonard de Vinci</h2>
+      <p class="fiche-dates">1452 – 1519 · Florence, Milan, Amboise</p>
+      <p class="fiche-accroche">Peintre, ingénieur, anatomiste, musicien. Des milliers de pages de notes et des dizaines d'œuvres inachevées. Une curiosité sans frontières — et une tension structurelle jamais résolue.</p>
+      <div class="fiche-forces">
+        <span class="fiche-force">Savoir</span>
+        <span class="fiche-force">Chaos</span>
+        <span class="fiche-force">Ordre</span>
+      </div>
+      <p class="fiche-lire">Lire la fiche →</p>
+    </a>
 
   </div>
 
-  <!-- NOTE METHODOLOGIQUE -->
   <div class="methode">
     <p class="methode-titre">Une note sur la méthode</p>
     <p class="methode-texte">
-      Ces lectures ne prétendent pas expliquer ces existences de manière exhaustive. Elles proposent un angle de lecture — celui des forces à l'œuvre — parmi d'autres possibles. Le M7FA n'est pas un outil de réduction. Il est un instrument d'observation. Chaque fiche est conçue pour être compréhensible sans connaissance préalable du modèle.
+      Ces trois fiches forment une trilogie pédagogique : un saint, une héroïne, un génie — trois imaginaires universels, trois configurations archétypiques distinctes. Elles sont conçues pour être compréhensibles sans connaissance préalable du M7FA, et pour montrer la diversité de ce que le modèle peut éclairer. D'autres fiches suivront.
     </p>
   </div>
 
