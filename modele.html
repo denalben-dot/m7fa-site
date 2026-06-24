@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Modèle en une page — M7FA</title>
+<meta name="description" content="Le Modèle des 7 Forces Archétypiques en une page. Une hypothèse simple pour rendre le réel plus lisible.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--or); }
+
+  /* HERO PAGE */
+  .page-hero {
+    padding: 140px 24px 80px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.75;
+    margin-bottom: 24px;
+  }
+
+  .page-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+
+  .page-intro {
+    font-size: clamp(17px, 2vw, 21px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.85;
+  }
+
+  .page-intro em {
+    font-style: normal;
+    color: var(--or-clair);
+  }
+
+  /* SEPARATEUR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
+
+  /* CONTENU */
+  .contenu {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .bloc {
+    margin-bottom: 80px;
+  }
+
+  .bloc-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .bloc-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  .bloc-texte {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .bloc-texte + .bloc-texte { margin-top: 4px; }
+
+  .accent { color: var(--or-clair); font-style: italic; }
+
+  /* LES 7 FORCES */
+  .forces-grille {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 32px 0 40px;
+    border: 1px solid var(--bordure);
+  }
+
+  .force-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    border-bottom: 1px solid var(--bordure);
+    transition: background 0.3s;
+  }
+
+  .force-item:last-child { border-bottom: none; }
+  .force-item:hover { background: rgba(201,168,76,0.04); }
+
+  .force-nom {
+    padding: 24px 28px;
+    border-right: 1px solid var(--bordure);
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--or);
+    display: flex;
+    align-items: center;
+  }
+
+  .force-desc {
+    padding: 24px 28px;
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.7;
+    display: flex;
+    align-items: center;
+  }
+
+  /* LISTE */
+  .liste-permet {
+    list-style: none;
+    margin: 24px 0 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .liste-permet li {
+    display: flex;
+    gap: 14px;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.65;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .liste-permet li::before {
+    content: '◆';
+    color: var(--or);
+    font-size: 9px;
+    margin-top: 7px;
+    flex-shrink: 0;
+    opacity: 0.65;
+  }
+
+  /* CITATION FINALE */
+  .citation-finale {
+    background: var(--obsidienne-3);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--or);
+    padding: 48px 56px;
+    margin: 0 0 100px;
+    text-align: center;
+  }
+
+  .citation-finale p {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+
+  .citation-finale p:last-child {
+    font-style: normal;
+    color: var(--or-clair);
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.08em;
+    margin-bottom: 0;
+  }
+
+  /* NAVIGATION BAS */
+  .nav-pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 720px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+    border-top: 1px solid var(--bordure);
+    padding-top: 40px;
+  }
+
+  .nav-page-lien {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-page-lien:hover { color: var(--or); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo { font-size: 20px; color: var(--or); margin-bottom: 16px; display: block; }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .force-item { grid-template-columns: 1fr; }
+    .force-nom { border-right: none; border-bottom: 1px solid var(--bordure); padding-bottom: 12px; }
+    .citation-finale { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">M7FA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="modele.html" class="active">Le modèle</a></li>
+    <li><a href="forces.html">Les 7 Forces</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <p class="page-eyebrow">Comprendre le M7FA</p>
+  <h1 class="page-titre">Le Modèle en une page</h1>
+  <p class="page-intro">
+    Le monde n'est pas seulement complexe.<br>
+    Il est traversé par des dynamiques souvent difficiles à relier entre elles.<br><br>
+    Les crises se multiplient. Les récits s'opposent.<br>
+    Les interprétations fragmentent ce que nous cherchons à comprendre.<br><br>
+    Et pourtant une impression persiste :<br>
+    <em>quelque chose échappe à la lecture d'ensemble.</em>
+  </p>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<div class="contenu">
+
+  <!-- HYPOTHESE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Fondement</p>
+    <h2 class="bloc-titre">Une hypothèse simple</h2>
+    <p class="bloc-texte">
+      Toute réalité humaine — individuelle ou collective — est travaillée par un nombre limité de dynamiques fondamentales. Ces dynamiques ne sont ni des idées, ni des doctrines, ni des catégories sociales.
+    </p>
+    <p class="bloc-texte">
+      Elles agissent comme des <span class="accent">forces</span> : elles orientent, structurent, déstabilisent, transforment. Les nommer ne permet pas d'expliquer entièrement le monde. Mais cela peut aider à mieux voir ce qui s'y joue.
+    </p>
+  </div>
+
+  <!-- POURQUOI FORCES -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Principe</p>
+    <h2 class="bloc-titre">Pourquoi parler de forces ?</h2>
+    <p class="bloc-texte">
+      Parce qu'une force ne décrit pas ce que les choses sont. Elle indique <span class="accent">ce qui les met en mouvement.</span>
+    </p>
+    <p class="bloc-texte">
+      Observer une société, une institution ou une trajectoire humaine à travers ces forces revient moins à la définir qu'à prêter attention aux tensions qui la traversent. Car le réel n'est pas figé — il se compose d'équilibres provisoires.
+    </p>
+  </div>
+
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<!-- LES 7 FORCES -->
+<div class="contenu">
+  <div class="bloc">
+    <p class="bloc-eyebrow">Architecture</p>
+    <h2 class="bloc-titre">Les sept forces</h2>
+    <p class="bloc-texte">
+      Le modèle identifie sept dynamiques récurrentes, présentes sous des formes diverses à travers les cultures et les époques.
+    </p>
+
+    <div class="forces-grille">
+      <div class="force-item">
+        <div class="force-nom">Chaos</div>
+        <div class="force-desc">Ce qui ouvre, fissure les cadres établis et rend l'émergence possible.</div>
+      </div>
+      <div class="force-item">
+        <div class="force-nom">Ordre</div>
+        <div class="force-desc">Ce qui structure, organise et stabilise dans la durée.</div>
+      </div>
+      <div class="force-item">
+        <div class="force-nom">Volonté</div>
+        <div class="force-desc">Ce qui engage, tranche et oriente l'action.</div>
+      </div>
+      <div class="force-item">
+        <div class="force-nom">Lien</div>
+        <div class="force-desc">Ce qui relie, attache et permet aux ensembles humains de tenir.</div>
+      </div>
+      <div class="force-item">
+        <div class="force-nom">Savoir</div>
+        <div class="force-desc">Ce qui éclaire, distingue et rend le monde intelligible.</div>
+      </div>
+      <div class="force-item">
+        <div class="force-nom">Épreuve</div>
+        <div class="force-desc">Ce qui confronte aux limites et oblige à transformer.</div>
+      </div>
+      <div class="force-item">
+        <div class="force-nom">Transcendance</div>
+        <div class="force-desc">Ce qui appelle un dépassement et reconfigure les horizons.</div>
+      </div>
+    </div>
+
+    <p class="bloc-texte">Ces forces ne sont ni bonnes ni mauvaises. Leur valeur dépend des équilibres qu'elles composent — ou qu'elles rompent.</p>
+  </div>
+
+  <!-- ARCHITECTURE DYNAMIQUE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Dynamique</p>
+    <h2 class="bloc-titre">Une architecture dynamique</h2>
+    <p class="bloc-texte">
+      Aucune force n'agit seule. Certaines se renforcent. D'autres se compensent. D'autres encore entrent en tension.
+    </p>
+    <p class="bloc-texte">
+      Les crises apparaissent souvent lorsque ces équilibres se déforment : lorsqu'une force devient hégémonique, ou lorsqu'une autre disparaît du champ collectif. Lire une situation à travers le M7FA consiste donc moins à chercher une cause unique qu'à <span class="accent">observer une configuration.</span>
+    </p>
+  </div>
+
+  <!-- SEUIL -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Nombre</p>
+    <h2 class="bloc-titre">Un seuil de lisibilité</h2>
+    <p class="bloc-texte">
+      Pourquoi sept ? Parce qu'en deçà, des dynamiques majeures demeurent invisibles. Au-delà, la lecture se fragmente.
+    </p>
+    <p class="bloc-texte">
+      Ce nombre ne relève ni d'un symbole ni d'un principe à défendre. Il correspond au seuil minimal à partir duquel certaines structures deviennent perceptibles. Le modèle ne prétend pas épuiser le réel. Il cherche à le rendre plus lisible.
+    </p>
+  </div>
+
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<div class="contenu">
+
+  <!-- CE QUE LE MODELE PERMET -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Usages</p>
+    <h2 class="bloc-titre">Ce que le modèle permet</h2>
+    <ul class="liste-permet">
+      <li>Repérer quelles forces dominent une situation</li>
+      <li>Identifier celles qui manquent</li>
+      <li>Comprendre certains mécanismes de compensation</li>
+      <li>Distinguer tensions profondes et conflits apparents</li>
+      <li>Lire les crises comme des déséquilibres dynamiques</li>
+    </ul>
+    <p class="bloc-texte">Il ne fournit pas de réponses toutes faites. Il propose une orientation.</p>
+  </div>
+
+  <!-- CE QUE LE MODELE NE FAIT PAS -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Limites</p>
+    <h2 class="bloc-titre">Ce que le modèle ne prétend pas faire</h2>
+    <p class="bloc-texte">
+      Le M7FA ne permet ni de prédire l'avenir, ni de contrôler les comportements humains, ni de réduire la complexité des sociétés à un schéma unique. Il n'est pas un système clos.
+    </p>
+    <p class="bloc-texte">
+      C'est une grille de lecture — <span class="accent">offerte à la discussion et à l'épreuve du réel.</span>
+    </p>
+  </div>
+
+  <!-- CARTE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Épistémologie</p>
+    <h2 class="bloc-titre">Une carte, non le territoire</h2>
+    <p class="bloc-texte">
+      Toute carte simplifie — non pour trahir le territoire, mais pour rendre possible l'orientation. Confondre le modèle avec le réel serait une erreur. Refuser toute carte condamnerait à l'errance.
+    </p>
+    <p class="bloc-texte">Le M7FA se tient dans cet intervalle.</p>
+  </div>
+
+</div>
+
+<!-- CITATION FINALE -->
+<div class="contenu">
+  <div class="citation-finale">
+    <p>Entrer dans ce modèle ne demande aucune adhésion.<br>
+    Il invite simplement à déplacer le regard :<br><br>
+    observer les tensions plutôt que les positions,<br>
+    les dynamiques plutôt que les apparences,<br>
+    les équilibres plutôt que les certitudes.</p>
+    <p>Le Modèle des 7 Forces Archétypiques n'a pas été conçu pour dire ce que le monde doit être.<br>Il propose d'aider à voir ce qui est à l'œuvre.</p>
+  </div>
+</div>
+
+<!-- NAVIGATION BAS -->
+<div class="nav-pages">
+  <a href="index.html" class="nav-page-lien">← Accueil</a>
+  <a href="forces.html" class="nav-page-lien">Les 7 Forces →</a>
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>
