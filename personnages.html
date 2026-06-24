@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personnages — Applications M7FA</title>
+<meta name="description" content="Lectures archétypiques de personnages historiques à travers le Modèle des 7 Forces. François d'Assise, Jeanne d'Arc et d'autres à venir.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .page-hero {
+    padding: 110px 24px 72px;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .fil-ariane {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .fil-ariane a {
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .fil-ariane a:hover { color: var(--or); }
+  .fil-ariane span { opacity: 0.4; }
+
+  .page-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .page-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    margin-bottom: 32px;
+  }
+
+  .page-intro {
+    font-size: clamp(16px, 1.9vw, 20px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.85;
+    margin-bottom: 16px;
+    max-width: 640px;
+  }
+
+  .page-intro-suite {
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-muted);
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  /* SEPARATEUR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 56px 24px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
+
+  /* GRILLE FICHES */
+  .contenu {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  .section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.6;
+    margin-bottom: 32px;
+  }
+
+  .fiches-grille {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+    margin-bottom: 80px;
+  }
+
+  /* CARTE ACTIVE */
+  .fiche-carte {
+    background: var(--obsidienne-2);
+    border: 1px solid var(--bordure);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px;
+    transition: background 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fiche-carte::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--or);
+    transition: height 0.3s;
+  }
+
+  .fiche-carte:hover {
+    background: var(--obsidienne-3);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .fiche-carte:hover::before { height: 100%; }
+
+  .fiche-type {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.6;
+    margin-bottom: 16px;
+  }
+
+  .fiche-nom {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .fiche-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--texte-muted);
+    margin-bottom: 20px;
+  }
+
+  .fiche-accroche {
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 300;
+    color: var(--texte-muted);
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+
+  .fiche-forces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .fiche-force {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or-sombre);
+    padding: 4px 10px;
+    border: 1px solid rgba(138,107,42,0.3);
+  }
+
+  .fiche-lire {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--or);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s;
+  }
+
+  .fiche-carte:hover .fiche-lire { gap: 14px; }
+
+  /* CARTE BIENTOT */
+  .fiche-bientot {
+    background: var(--obsidienne);
+    border: 1px solid rgba(201,168,76,0.08);
+    display: flex;
+    flex-direction: column;
+    padding: 36px 32px;
+    opacity: 0.5;
+  }
+
+  .fiche-bientot-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    margin-bottom: 16px;
+  }
+
+  .fiche-bientot-nom {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 400;
+    color: var(--texte-muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .fiche-bientot-dates {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--texte-muted);
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+
+  .fiche-bientot-forces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .fiche-bientot-force {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    padding: 4px 10px;
+    border: 1px solid rgba(154,144,128,0.2);
+    opacity: 0.5;
+  }
+
+  .bientot-badge {
+    margin-top: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    opacity: 0.5;
+  }
+
+  /* METHODE */
+  .methode {
+    background: var(--obsidienne-3);
+    border: 1px solid var(--bordure);
+    padding: 40px 48px;
+    margin-top: 20px;
+  }
+
+  .methode-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(14px, 1.8vw, 17px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    margin-bottom: 20px;
+  }
+
+  .methode-texte {
+    font-size: clamp(15px, 1.6vw, 17px);
+    font-weight: 300;
+    color: var(--texte-muted);
+    line-height: 1.85;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo { font-size: 20px; color: var(--or); margin-bottom: 16px; display: block; }
+
+  @media (max-width: 600px) {
+    .fiches-grille { grid-template-columns: 1fr; }
+    .methode { padding: 28px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="fil-ariane">
+    <a href="index.html">Accueil</a>
+    <span>›</span>
+    Applications
+    <span>›</span>
+    Personnages
+  </div>
+  <p class="page-eyebrow">Applications · Personnages</p>
+  <h1 class="page-titre">Personnages</h1>
+  <p class="page-intro">
+    Chaque trajectoire humaine est une configuration unique de forces à l'œuvre. Ces fiches proposent des lectures archétypiques de personnages historiques — non pour les réduire à un schéma, mais pour voir autrement ce qui s'est joué dans leur vie.
+  </p>
+  <p class="page-intro-suite">
+    Le M7FA ne cherche pas à expliquer ces existences. Il cherche à rendre visibles les dynamiques qui les ont traversées.
+  </p>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<div class="contenu">
+
+  <p class="section-label">Fiches disponibles et à venir</p>
+
+  <div class="fiches-grille">
+
+    <!-- FRANCOIS D'ASSISE — actif -->
+    <a href="francois-assise.html" class="fiche-carte">
+      <p class="fiche-type">Lecture archétypique</p>
+      <h2 class="fiche-nom">François d'Assise</h2>
+      <p class="fiche-dates">1181 – 1226 · Ombrie, Italie</p>
+      <p class="fiche-accroche">Fils de marchand devenu mendiant volontaire. L'une des ruptures les plus radicales de l'histoire occidentale — et l'une des plus éclairantes pour le M7FA.</p>
+      <div class="fiche-forces">
+        <span class="fiche-force">Épreuve</span>
+        <span class="fiche-force">Volonté</span>
+        <span class="fiche-force">Lien</span>
+        <span class="fiche-force">Transcendance</span>
+      </div>
+      <p class="fiche-lire">Lire la fiche →</p>
+    </a>
+
+    <!-- JEANNE D'ARC — bientôt -->
+    <div class="fiche-bientot">
+      <p class="fiche-bientot-label">Prochainement</p>
+      <h2 class="fiche-bientot-nom">Jeanne d'Arc</h2>
+      <p class="fiche-bientot-dates">1412 – 1431 · France</p>
+      <div class="fiche-bientot-forces">
+        <span class="fiche-bientot-force">Volonté</span>
+        <span class="fiche-bientot-force">Transcendance</span>
+        <span class="fiche-bientot-force">Épreuve</span>
+        <span class="fiche-bientot-force">Ordre</span>
+      </div>
+      <p class="bientot-badge" style="margin-top: 24px;">En préparation ○</p>
+    </div>
+
+    <!-- SLOT 3 — vide -->
+    <div class="fiche-bientot" style="opacity:0.25;">
+      <p class="fiche-bientot-label">À venir</p>
+      <h2 class="fiche-bientot-nom" style="opacity:0.4;">Prochain personnage</h2>
+      <p class="bientot-badge" style="margin-top: 24px;">○</p>
+    </div>
+
+  </div>
+
+  <!-- NOTE METHODOLOGIQUE -->
+  <div class="methode">
+    <p class="methode-titre">Une note sur la méthode</p>
+    <p class="methode-texte">
+      Ces lectures ne prétendent pas expliquer ces existences de manière exhaustive. Elles proposent un angle de lecture — celui des forces à l'œuvre — parmi d'autres possibles. Le M7FA n'est pas un outil de réduction. Il est un instrument d'observation. Chaque fiche est conçue pour être compréhensible sans connaissance préalable du modèle.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>
