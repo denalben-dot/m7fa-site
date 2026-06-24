@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ce que le M7FA n'est pas — Cadre éthique</title>
+<meta name="description" content="Le cadre éthique du M7FA : ce que le modèle refuse d'être. Une clarification nécessaire avant d'entrer dans la lecture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--or); }
+
+  /* HERO */
+  .page-hero {
+    padding: 140px 24px 80px;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.75;
+    margin-bottom: 24px;
+  }
+
+  .page-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(24px, 4.5vw, 44px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    margin-bottom: 40px;
+  }
+
+  .page-intro {
+    font-size: clamp(16px, 1.9vw, 20px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .page-intro-suite {
+    font-size: clamp(15px, 1.7vw, 18px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte-muted);
+    line-height: 1.8;
+  }
+
+  /* SEPARATEUR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant { width: 8px; height: 8px; background: var(--or); transform: rotate(45deg); opacity: 0.6; }
+
+  /* GRILLE DES REFUS */
+  .contenu {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .grille-refus {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 100px;
+    border: 1px solid var(--bordure);
+  }
+
+  .refus-item {
+    background: var(--obsidienne-2);
+    padding: 40px 36px;
+    transition: background 0.3s;
+    position: relative;
+  }
+
+  .refus-item:hover {
+    background: var(--obsidienne-3);
+  }
+
+  .refus-item::before {
+    content: '×';
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    color: var(--or-sombre);
+    opacity: 0.5;
+    display: block;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .refus-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 1.5vw, 16px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .refus-texte {
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 300;
+    color: var(--texte-muted);
+    line-height: 1.8;
+  }
+
+  .refus-texte + .refus-texte {
+    margin-top: 12px;
+  }
+
+  /* SECTION VIGILANCE */
+  .bloc {
+    margin-bottom: 80px;
+  }
+
+  .bloc-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .bloc-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 2.8vw, 26px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+    margin-bottom: 28px;
+  }
+
+  .bloc-texte {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  /* POSTURE */
+  .posture-liste {
+    list-style: none;
+    margin: 28px 0 32px;
+    border: 1px solid var(--bordure);
+  }
+
+  .posture-liste li {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--bordure);
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.5;
+  }
+
+  .posture-liste li:last-child { border-bottom: none; }
+
+  .posture-liste li::before {
+    content: '◆';
+    color: var(--or);
+    font-size: 9px;
+    flex-shrink: 0;
+    opacity: 0.7;
+    font-style: normal;
+  }
+
+  /* CITATION FINALE */
+  .citation-finale {
+    background: var(--obsidienne-3);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--or);
+    padding: 56px 64px;
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+  .citation-finale p {
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .citation-finale p:last-child {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: clamp(13px, 1.4vw, 15px);
+    letter-spacing: 0.1em;
+    color: var(--or);
+    margin-bottom: 0;
+  }
+
+  /* NAVIGATION BAS */
+  .nav-pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+    border-top: 1px solid var(--bordure);
+    padding-top: 40px;
+  }
+
+  .nav-page-lien {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-page-lien:hover { color: var(--or); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo { font-size: 20px; color: var(--or); margin-bottom: 16px; display: block; }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .grille-refus { grid-template-columns: 1fr; }
+    .citation-finale { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">M7FA</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="modele.html">Le modèle</a></li>
+    <li><a href="forces.html">Les 7 Forces</a></li>
+    <li><a href="ethique.html" class="active">Cadre éthique</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <p class="page-eyebrow">Cadre éthique</p>
+  <h1 class="page-titre">Ce que le M7FA n'est pas</h1>
+  <p class="page-intro">
+    Avant d'entrer dans ce modèle, une clarification est nécessaire.
+  </p>
+  <p class="page-intro-suite">
+    Le Modèle des 7 Forces Archétypiques n'a pas été conçu pour séduire, rassurer ou fédérer.<br>
+    Il a été conçu pour rendre le réel plus lisible — sans prétendre le simplifier.<br><br>
+    Cette exigence implique de nommer explicitement ce que le modèle refuse d'être.
+  </p>
+</div>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<!-- GRILLE DES 6 REFUS -->
+<div class="contenu">
+  <div class="grille-refus">
+
+    <div class="refus-item">
+      <h2 class="refus-titre">Ce n'est pas une religion</h2>
+      <p class="refus-texte">Le M7FA ne propose ni croyance, ni révélation, ni vérité ultime. Il n'appelle aucune adhésion, ne réclame aucune loyauté, et ne fonde aucune communauté de fidèles.</p>
+      <p class="refus-texte">Le modèle peut être discuté, critiqué, contesté — et doit pouvoir l'être.</p>
+    </div>
+
+    <div class="refus-item">
+      <h2 class="refus-titre">Ce n'est pas une spiritualité à suivre</h2>
+      <p class="refus-texte">Bien qu'il mobilise parfois un vocabulaire symbolique, le M7FA n'invite à aucune voie intérieure particulière. Il ne promet ni transformation personnelle, ni élévation, ni accomplissement.</p>
+      <p class="refus-texte">Il cherche à éclairer des dynamiques — non à orienter des existences.</p>
+    </div>
+
+    <div class="refus-item">
+      <h2 class="refus-titre">Ce n'est pas une psychologie de développement personnel</h2>
+      <p class="refus-texte">Le modèle n'a pas été conçu pour optimiser les individus, améliorer des performances, ou produire des trajectoires idéales. Il ne classe pas les personnes. Il ne prescrit pas de manière de vivre.</p>
+      <p class="refus-texte">La complexité humaine ne se réduit pas à une grille.</p>
+    </div>
+
+    <div class="refus-item">
+      <h2 class="refus-titre">Ce n'est pas un système clos</h2>
+      <p class="refus-texte">Le M7FA n'est ni une doctrine, ni une architecture intellectuelle achevée. Il demeure ouvert à la critique, à la révision, et à l'épreuve du réel.</p>
+      <p class="refus-texte">Toute tentative de le figer le trahirait.</p>
+    </div>
+
+    <div class="refus-item">
+      <h2 class="refus-titre">Ce n'est pas un outil de pouvoir</h2>
+      <p class="refus-texte">Le modèle n'a pas été élaboré pour influencer, orienter ou gouverner. Il refuse d'être utilisé comme instrument de manipulation, de catégorisation rigide ou d'ingénierie sociale.</p>
+      <p class="refus-texte">Rendre le réel plus lisible ne signifie pas le rendre contrôlable.</p>
+    </div>
+
+    <div class="refus-item">
+      <h2 class="refus-titre">Ce n'est pas une explication totale du monde</h2>
+      <p class="refus-texte">Aucun modèle ne peut prétendre épuiser la complexité du réel. Le M7FA n'explique pas tout. Il n'a pas cette ambition.</p>
+      <p class="refus-texte">Il propose une lecture possible — structurée, explicite, assumée — parmi d'autres.</p>
+    </div>
+
+  </div>
+
+  <!-- VIGILANCE -->
+  <div class="bloc">
+    <p class="bloc-eyebrow">Posture requise</p>
+    <h2 class="bloc-titre">Une vigilance nécessaire</h2>
+    <p class="bloc-texte">
+      Tout modèle comporte un risque : celui d'être simplifié, absolutisé ou détourné. Le M7FA appelle donc une posture exigeante :
+    </p>
+    <ul class="posture-liste">
+      <li>Lire sans réduire</li>
+      <li>Comprendre sans enfermer</li>
+      <li>Utiliser sans dogmatiser</li>
+    </ul>
+    <p class="bloc-texte">Ce modèle n'est pas un refuge intellectuel. Il est un instrument de discernement.</p>
+  </div>
+
+  <!-- INVITATION -->
+  <div class="citation-finale">
+    <p>
+      Entrer dans cette lecture suppose d'accepter une limite fondamentale :<br>
+      le réel restera toujours plus vaste que les grilles que nous construisons pour l'approcher.
+    </p>
+    <p>
+      Le M7FA n'a pas vocation à remplacer le jugement. Il cherche à l'éclairer.
+    </p>
+    <p>Le M7FA n'est pas un système auquel croire.<br>C'est un outil avec lequel apprendre à voir.</p>
+  </div>
+
+  <!-- NAVIGATION BAS -->
+  <div class="nav-pages">
+    <a href="forces.html" class="nav-page-lien">← Les 7 Forces</a>
+    <a href="index.html" class="nav-page-lien">Accueil →</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>
