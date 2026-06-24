@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M7FA — La Boussole Archétypique</title>
+<meta name="description" content="Le Modèle des 7 Forces Archétypiques. Une boussole symbolique pour lire les dynamiques profondes du réel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --or: #C9A84C;
+    --or-clair: #E8C97A;
+    --or-sombre: #8A6B2A;
+    --obsidienne: #0A0A0F;
+    --obsidienne-2: #111118;
+    --obsidienne-3: #1A1A24;
+    --texte: #E8E4D8;
+    --texte-muted: #9A9080;
+    --bordure: rgba(201,168,76,0.2);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--obsidienne);
+    color: var(--texte);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--or); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('hero.png');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.18;
+    filter: blur(1px);
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center 40%, rgba(201,168,76,0.06) 0%, transparent 65%),
+                linear-gradient(to bottom, transparent 50%, var(--obsidienne) 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 760px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 32px;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 700;
+    color: var(--or);
+    letter-spacing: 0.08em;
+    line-height: 1.05;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 1.8vw, 16px);
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--texte-muted);
+    margin-bottom: 56px;
+  }
+
+  .hero-accroche {
+    font-size: clamp(17px, 2.2vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.8;
+    max-width: 620px;
+    margin: 0 auto 48px;
+  }
+
+  .hero-accroche em {
+    font-style: normal;
+    color: var(--or-clair);
+  }
+
+  .ligne-or {
+    width: 60px;
+    height: 1px;
+    background: var(--or);
+    margin: 0 auto 48px;
+    opacity: 0.5;
+  }
+
+  .hero-phrase-cle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(15px, 1.8vw, 18px);
+    font-weight: 400;
+    color: var(--texte-muted);
+    letter-spacing: 0.04em;
+    max-width: 560px;
+    margin: 0 auto 56px;
+  }
+
+  .hero-phrase-cle a {
+    color: var(--or);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(201,168,76,0.4);
+  }
+
+  .btn-principal {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--obsidienne);
+    background: var(--or);
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .btn-principal:hover {
+    background: var(--or-clair);
+    transform: translateY(-1px);
+  }
+
+  /* SEPARATEUR */
+  .sep {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
+  .sep-diamant {
+    width: 8px; height: 8px;
+    background: var(--or);
+    transform: rotate(45deg);
+    opacity: 0.6;
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px 100px;
+  }
+
+  .section-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+
+  .section-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(22px, 3.5vw, 32px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.06em;
+    line-height: 1.3;
+    margin-bottom: 32px;
+  }
+
+  .section-texte {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.85;
+    margin-bottom: 24px;
+  }
+
+  .section-texte + .section-texte { margin-top: 8px; }
+
+  .accent {
+    color: var(--or-clair);
+    font-style: italic;
+  }
+
+  /* ILLUSTRATION */
+  .illustration-wrap {
+    max-width: 960px;
+    margin: 0 auto 100px;
+    padding: 0 24px;
+  }
+
+  .illustration-wrap img {
+    width: 100%;
+    display: block;
+    border: 1px solid var(--bordure);
+  }
+
+  /* LISTE */
+  .liste-forces {
+    list-style: none;
+    margin: 32px 0 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .liste-forces li {
+    display: flex;
+    gap: 16px;
+    font-size: clamp(15px, 1.6vw, 18px);
+    font-weight: 300;
+    color: var(--texte);
+    line-height: 1.6;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--bordure);
+  }
+
+  .liste-forces li::before {
+    content: '◆';
+    color: var(--or);
+    font-size: 10px;
+    margin-top: 6px;
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  /* CE QUE CE N'EST PAS */
+  .grille-negatif {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin: 32px 0;
+    border: 1px solid var(--bordure);
+  }
+
+  .negatif-item {
+    background: var(--obsidienne-2);
+    padding: 24px 28px;
+    font-size: clamp(14px, 1.5vw, 16px);
+    font-weight: 300;
+    color: var(--texte-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .negatif-item::before {
+    content: '×  ';
+    color: var(--or-sombre);
+    font-family: 'Cinzel', serif;
+  }
+
+  /* SEUIL */
+  .seuil {
+    background: var(--obsidienne-3);
+    border: 1px solid var(--bordure);
+    border-left: 3px solid var(--or);
+    padding: 56px 64px;
+    margin: 0 24px 100px;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .seuil-titre {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 600;
+    color: var(--or);
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+
+  .seuil-texte {
+    font-size: clamp(16px, 1.8vw, 19px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--texte);
+    line-height: 1.9;
+    margin-bottom: 20px;
+  }
+
+  .seuil-conclusion {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(13px, 1.5vw, 15px);
+    letter-spacing: 0.15em;
+    color: var(--or);
+    margin: 36px 0 40px;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--bordure);
+    padding: 48px 24px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--texte-muted);
+    text-transform: uppercase;
+  }
+
+  footer .footer-logo {
+    font-size: 20px;
+    color: var(--or);
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  /* ANIMATIONS */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-content > * {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: apparition 0.9s ease forwards;
+    }
+    .hero-eyebrow { animation-delay: 0.1s; }
+    .hero-title { animation-delay: 0.25s; }
+    .hero-subtitle { animation-delay: 0.4s; }
+    .hero-accroche { animation-delay: 0.55s; }
+    .ligne-or { animation-delay: 0.65s; }
+    .hero-phrase-cle { animation-delay: 0.75s; }
+    .btn-principal { animation-delay: 0.9s; }
+
+    @keyframes apparition {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .grille-negatif { grid-template-columns: 1fr; }
+    .seuil { padding: 36px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">M7FA</a>
+  <ul class="nav-links">
+    <li><a href="#modele">Le modèle</a></li>
+    <li><a href="#forces">Les 7 Forces</a></li>
+    <li><a href="#seuil">Franchir le seuil</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Modèle des 7 Forces Archétypiques</p>
+    <h1 class="hero-title">M7FA</h1>
+    <p class="hero-subtitle">La Boussole Archétypique · 7 Forces · 3 Axes · 1 Boussole</p>
+    <p class="hero-accroche">
+      Il arrive que le monde cesse d'être lisible.<br>
+      Les repères se brouillent. Les récits se contredisent.<br>
+      Les explications s'accumulent sans jamais vraiment éclairer.<br><br>
+      Nous vivons dans un monde saturé de données, de discours, de modèles —<br>
+      et pourtant, de plus en plus de personnes éprouvent un même sentiment :<br>
+      <em>quelque chose manque encore pour rendre le réel lisible.</em>
+    </p>
+    <div class="ligne-or"></div>
+    <p class="hero-phrase-cle">
+      Ce lieu ne propose ni réponses toutes faites, ni doctrine à adopter, ni vérité à croire.<br>
+      <a href="#modele">Il propose une grille de lecture.</a>
+    </p>
+    <a href="#modele" class="btn-principal">Découvrir le modèle</a>
+  </div>
+</div>
+
+<!-- ILLUSTRATION -->
+<div class="illustration-wrap">
+  <img src="hero.png" alt="Les 7 Forces Archétypiques — Chaos, Ordre, Volonté, Lien, Savoir, Épreuve, Transcendance">
+</div>
+
+<!-- BOUSSOLE SYMBOLIQUE -->
+<section id="modele">
+  <p class="section-eyebrow">Le modèle</p>
+  <h2 class="section-titre">Une boussole symbolique</h2>
+  <p class="section-texte">
+    Le Modèle des 7 Forces Archétypiques est une boussole symbolique. Il ne cherche pas à dire ce qu'il faut penser, mais à rendre visibles les forces fondamentales qui structurent le réel : dans les sociétés, les civilisations, les récits, les crises, et jusque dans nos propres trajectoires intérieures.
+  </p>
+  <p class="section-texte">
+    Ces forces ne sont <span class="accent">ni morales, ni idéologiques. Elles ne sont ni bonnes, ni mauvaises.</span> Elles agissent, entrent en tension, s'équilibrent, se déforment. Le modèle ne dit pas qui a raison. Il montre ce qui domine, ce qui manque, ce qui compense, ce qui déborde.
+  </p>
+</section>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<!-- CE QUE VOUS TROUVEREZ -->
+<section id="forces">
+  <p class="section-eyebrow">Ce que vous trouverez ici</p>
+  <h2 class="section-titre">Un outil de lucidité</h2>
+  <ul class="liste-forces">
+    <li>Une cartographie symbolique du réel, fondée sur sept forces archétypiques fondamentales</li>
+    <li>Une méthode de lecture applicable aux civilisations, aux systèmes sociaux et aux crises contemporaines</li>
+    <li>Un cadre rigoureux distinguant ce qui est attesté, interprété, ou extrapolé symboliquement</li>
+    <li>Une attention constante portée aux risques de simplification, de manipulation et d'ingénierie sociale</li>
+  </ul>
+  <p class="section-texte" style="font-family:'Cinzel',serif; font-size:16px; letter-spacing:0.06em; color:var(--or);">
+    Le M7FA n'est pas un outil de pouvoir. Il est un outil de lucidité.
+  </p>
+</section>
+
+<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
+
+<!-- CE QUE CE N'EST PAS -->
+<section>
+  <p class="section-eyebrow">Clarté épistémique</p>
+  <h2 class="section-titre">Ce que ce modèle n'est pas</h2>
+  <div class="grille-negatif">
+    <div class="negatif-item">Une religion</div>
+    <div class="negatif-item">Une spiritualité à suivre</div>
+    <div class="negatif-item">Une psychologie de développement personnel</div>
+    <div class="negatif-item">Un système clos</div>
+  </div>
+  <p class="section-texte">
+    Le modèle ne demande pas l'adhésion. Il supporte la critique. Il est conçu pour être mis à l'épreuve du réel.
+  </p>
+</section>
+
+<!-- SEUIL -->
+<div class="seuil" id="seuil">
+  <h2 class="seuil-titre">Franchir le seuil</h2>
+  <p class="seuil-texte">
+    Entrer ici, c'est accepter une chose simple mais exigeante : regarder le monde sans chercher à le réduire, et sans renoncer à le comprendre.
+  </p>
+  <p class="seuil-texte">
+    Si vous cherchez une vérité à défendre, ce site vous décevra.<br>
+    Si vous cherchez un outil pour lire les dynamiques profondes à l'œuvre, alors vous êtes au bon endroit.
+  </p>
+  <p class="seuil-conclusion">Le seuil est franchi. La lecture peut commencer.</p>
+  <a href="modele.html" class="btn-principal">Découvrir le modèle en une page →</a>
+</div>
+
+<footer>
+  <span class="footer-logo">M7FA</span>
+  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
+</footer>
+
+</body>
+</html>
