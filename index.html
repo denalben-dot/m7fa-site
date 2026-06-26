@@ -1,517 +1,514 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M7FA — La Boussole Archétypique</title>
-<meta name="description" content="Le Modèle des 7 Forces Archétypiques. Une boussole symbolique pour lire les dynamiques profondes du réel.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --or: #C9A84C;
-    --or-clair: #E8C97A;
-    --or-sombre: #8A6B2A;
-    --obsidienne: #0A0A0F;
-    --obsidienne-2: #111118;
-    --obsidienne-3: #1A1A24;
-    --texte: #E8E4D8;
-    --texte-muted: #9A9080;
-    --bordure: rgba(201,168,76,0.2);
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le Modèle des 7 Forces Archétypiques. Une boussole symbolique pour lire les dynamiques profondes du réel.">
+  <title>M7FA — La Boussole Archétypique</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --or:         #C49E59;
+  --obsidienne: #111111;
+  --ivoire:     #F8F5EE;
+  --noir:       #000000;
+  --blanc:      #FFFFFF;
+  --header-h:     72px;
+  --header-h-mob: 60px;
+  --font-display: 'Cinzel', 'Trajan Pro', serif;
+  --font-body:    'Cormorant Garamond', 'Garamond', serif;
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition:  0.28s var(--ease-smooth);
+  --max-w: 780px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--obsidienne);
+  color: var(--ivoire);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── HEADER ──────────────────────────────────────────────────── */
+.m7fa-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--header-h);
+  background: rgba(17,17,17,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(196,158,89,0.18);
+  transition: background var(--transition), border-color var(--transition);
+}
+.m7fa-header.is-scrolled {
+  background: rgba(17,17,17,0.97);
+  border-bottom-color: rgba(196,158,89,0.32);
+}
+.m7fa-header__inner {
+  max-width: 1200px; margin: 0 auto; height: 100%;
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+}
+.m7fa-logo {
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none; flex-shrink: 0;
+}
+.m7fa-logo__mark {
+  width: 36px; height: 34px; flex-shrink: 0;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.m7fa-logo:hover .m7fa-logo__mark { transform: scale(1.06); opacity: 0.88; }
+.m7fa-logo__mark svg { width: 100%; height: 100%; }
+.m7fa-logo__mark .logo-path { fill: var(--or); transition: fill var(--transition); }
+.m7fa-logo__wordmark { display: flex; flex-direction: column; line-height: 1; }
+.m7fa-logo__title {
+  font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
+  letter-spacing: 0.18em; color: var(--or); text-transform: uppercase;
+}
+.m7fa-logo__subtitle {
+  font-family: var(--font-body); font-weight: 300; font-size: 0.62rem;
+  letter-spacing: 0.22em; color: rgba(248,245,238,0.45); text-transform: uppercase;
+  margin-top: 0.2rem;
+}
+.m7fa-nav { display: flex; align-items: center; gap: 0.2rem; }
+.m7fa-nav__item {
+  position: relative;
+  font-family: var(--font-display); font-weight: 400; font-size: 0.7rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(248,245,238,0.6); text-decoration: none;
+  padding: 0.5rem 0.85rem;
+  transition: color var(--transition);
+  white-space: nowrap;
+}
+.m7fa-nav__item::after {
+  content: ''; position: absolute; bottom: 0; left: 0.85rem; right: 0.85rem;
+  height: 1px; background: var(--or);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform var(--transition);
+}
+.m7fa-nav__item:hover { color: var(--ivoire); }
+.m7fa-nav__item:hover::after,
+.m7fa-nav__item[aria-current="page"]::after { transform: scaleX(1); }
+.m7fa-nav__item[aria-current="page"] { color: var(--or); }
+.m7fa-nav__sep {
+  width: 1px; height: 16px;
+  background: rgba(196,158,89,0.22); margin: 0 0.4rem; flex-shrink: 0;
+}
+.m7fa-cta {
+  font-family: var(--font-display); font-weight: 400; font-size: 0.66rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--or); text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(196,158,89,0.42);
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+.m7fa-cta:hover {
+  background: var(--or); color: var(--obsidienne);
+  border-color: var(--or); transform: translateY(-1px);
+}
+.m7fa-burger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; width: 28px; height: 28px;
+  cursor: pointer; background: none; border: none; padding: 0; flex-shrink: 0;
+}
+.m7fa-burger__bar {
+  display: block; width: 100%; height: 1px; background: var(--or);
+  transition: transform var(--transition), opacity var(--transition);
+  transform-origin: left;
+}
+.m7fa-burger[aria-expanded="true"] .m7fa-burger__bar:nth-child(1) { transform: rotate(45deg); }
+.m7fa-burger[aria-expanded="true"] .m7fa-burger__bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.m7fa-burger[aria-expanded="true"] .m7fa-burger__bar:nth-child(3) { transform: translateY(-1px) rotate(-45deg); }
+.m7fa-drawer {
+  display: none; position: fixed; top: var(--header-h); left: 0; right: 0;
+  background: rgba(17,17,17,0.98); backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(196,158,89,0.18);
+  padding: 1.5rem 2rem 2rem;
+  flex-direction: column; gap: 0.25rem;
+  transform: translateY(-8px); opacity: 0;
+  transition: transform var(--transition), opacity var(--transition);
+  z-index: 99; pointer-events: none;
+}
+.m7fa-drawer.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.m7fa-drawer .m7fa-nav__item {
+  font-size: 0.82rem; padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(196,158,89,0.08);
+  color: rgba(248,245,238,0.65);
+}
+.m7fa-drawer .m7fa-nav__item::after { display: none; }
+.m7fa-drawer .m7fa-nav__item:hover { color: var(--or); }
+.m7fa-drawer .m7fa-cta { margin-top: 1rem; text-align: center; padding: 0.8rem; }
+.m7fa-header-spacer { height: var(--header-h); }
 
-  html { scroll-behavior: smooth; }
+/* ── PAGE ────────────────────────────────────────────────────── */
+.page-wrap {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 4rem 2rem 8rem;
+}
 
-  body {
-    background-color: var(--obsidienne);
-    color: var(--texte);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.75;
-    overflow-x: hidden;
-  }
+/* Eyebrow */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--or);
+  margin-bottom: 1rem;
+}
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 48px;
-    background: linear-gradient(to bottom, rgba(10,10,15,0.95), transparent);
-    backdrop-filter: blur(4px);
-  }
+/* Titres */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--ivoire);
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 1.75rem);
+  font-weight: 400;
+  color: var(--or);
+  letter-spacing: 0.06em;
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(196,158,89,0.18);
+}
+h2:first-of-type { margin-top: 2rem; }
 
-  .nav-logo {
-    font-family: 'Cinzel', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--or);
-    letter-spacing: 0.12em;
-    text-decoration: none;
-  }
+/* Intro / chapeau */
+.intro {
+  font-size: 1.15rem;
+  color: rgba(248,245,238,0.72);
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+.intro em { font-style: normal; color: var(--ivoire); }
 
-  .nav-links {
-    display: flex;
-    gap: 36px;
-    list-style: none;
-  }
+/* Corps de texte */
+p {
+  margin-bottom: 1.4rem;
+  color: rgba(248,245,238,0.82);
+}
 
-  .nav-links a {
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--texte-muted);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
+/* Règle Or */
+.rule-or {
+  border: none;
+  border-top: 1px solid rgba(196,158,89,0.35);
+  margin: 2.5rem 0;
+}
 
-  .nav-links a:hover { color: var(--or); }
+/* Lien */
+a { color: var(--or); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-  /* HERO */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 120px 24px 80px;
-    overflow: hidden;
-  }
+/* Navigation bas de page */
+.page-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 5rem; padding-top: 2rem;
+  border-top: 1px solid rgba(196,158,89,0.2);
+  gap: 1rem; flex-wrap: wrap;
+}
+.page-nav a {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.55);
+  transition: color var(--transition);
+}
+.page-nav a:hover { color: var(--or); text-decoration: none; }
 
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url('hero.png');
-    background-size: cover;
-    background-position: center top;
-    opacity: 0.18;
-    filter: blur(1px);
-  }
+/* Footer */
+.site-footer {
+  border-top: 1px solid rgba(196,158,89,0.15);
+  padding: 2rem;
+  text-align: center;
+}
+.site-footer p {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.28);
+  margin: 0;
+}
 
-  .hero-gradient {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center 40%, rgba(201,168,76,0.06) 0%, transparent 65%),
-                linear-gradient(to bottom, transparent 50%, var(--obsidienne) 100%);
-  }
+/* Tags forces (page forces) */
+.force-tags {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.force-tag {
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.45);
+  border: 1px solid rgba(196,158,89,0.2);
+  padding: 0.25rem 0.6rem;
+}
 
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 760px;
-  }
+/* Ancres nav forces */
+.forces-nav {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin: 1.5rem 0 3rem;
+}
+.forces-nav a {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.5);
+  border: 1px solid rgba(196,158,89,0.18);
+  padding: 0.3rem 0.7rem;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.forces-nav a:hover {
+  color: var(--or);
+  border-color: rgba(196,158,89,0.5);
+  text-decoration: none;
+}
 
-  .hero-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--or);
-    margin-bottom: 32px;
-    opacity: 0.85;
-  }
+/* Force section avec glyphe */
+.force-section { padding-top: 1rem; }
+.force-num {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.24em;
+  color: rgba(196,158,89,0.5);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+  display: block;
+}
 
-  .hero-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(52px, 8vw, 96px);
-    font-weight: 700;
-    color: var(--or);
-    letter-spacing: 0.08em;
-    line-height: 1.05;
-    margin-bottom: 16px;
-  }
+/* Hero (accueil) */
+.hero {
+  padding: 5rem 0 4rem;
+  border-bottom: 1px solid rgba(196,158,89,0.15);
+  margin-bottom: 3rem;
+}
+.hero h1 { margin-bottom: 0.5rem; }
+.hero .tagline {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(196,158,89,0.65);
+  margin-bottom: 2rem;
+}
+.hero-body {
+  font-size: 1.1rem;
+  color: rgba(248,245,238,0.68);
+  line-height: 1.9;
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+.hero-body em { font-style: italic; color: rgba(248,245,238,0.85); }
+.hero-cta {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--or);
+  border: 1px solid rgba(196,158,89,0.45);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+}
+.hero-cta:hover {
+  background: var(--or); color: var(--obsidienne);
+  text-decoration: none;
+}
 
-  .hero-subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(13px, 1.8vw, 16px);
-    font-weight: 400;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: var(--texte-muted);
-    margin-bottom: 56px;
-  }
+/* Sections contenu accueil */
+.content-section { margin-bottom: 4rem; }
+.content-section h2 { margin-top: 0; border-top: none; padding-top: 0; }
 
-  .hero-accroche {
-    font-size: clamp(17px, 2.2vw, 22px);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--texte);
-    line-height: 1.8;
-    max-width: 620px;
-    margin: 0 auto 48px;
-  }
+/* Liste */
+ul.m7fa-list {
+  list-style: none; padding: 0; margin: 1rem 0 1.5rem;
+}
+ul.m7fa-list li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  border-bottom: 1px solid rgba(196,158,89,0.08);
+  color: rgba(248,245,238,0.75);
+  position: relative;
+}
+ul.m7fa-list li::before {
+  content: '—';
+  position: absolute; left: 0;
+  color: var(--or);
+  font-family: var(--font-display);
+}
 
-  .hero-accroche em {
-    font-style: normal;
-    color: var(--or-clair);
-  }
+/* Ce que n'est pas */
+.not-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+.not-item {
+  border: 1px solid rgba(196,158,89,0.15);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(248,245,238,0.45);
+  text-align: center;
+}
 
-  .ligne-or {
-    width: 60px;
-    height: 1px;
-    background: var(--or);
-    margin: 0 auto 48px;
-    opacity: 0.5;
-  }
-
-  .hero-phrase-cle {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(15px, 1.8vw, 18px);
-    font-weight: 400;
-    color: var(--texte-muted);
-    letter-spacing: 0.04em;
-    max-width: 560px;
-    margin: 0 auto 56px;
-  }
-
-  .hero-phrase-cle a {
-    color: var(--or);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-color: rgba(201,168,76,0.4);
-  }
-
-  .btn-principal {
-    display: inline-block;
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--obsidienne);
-    background: var(--or);
-    padding: 16px 40px;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .btn-principal:hover {
-    background: var(--or-clair);
-    transform: translateY(-1px);
-  }
-
-  /* SEPARATEUR */
-  .sep {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 80px 24px;
-  }
-
-  .sep-line { flex: 1; height: 1px; background: var(--bordure); }
-  .sep-diamant {
-    width: 8px; height: 8px;
-    background: var(--or);
-    transform: rotate(45deg);
-    opacity: 0.6;
-  }
-
-  /* SECTIONS */
-  section {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 0 24px 100px;
-  }
-
-  .section-eyebrow {
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--or);
-    opacity: 0.7;
-    margin-bottom: 24px;
-  }
-
-  .section-titre {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(22px, 3.5vw, 32px);
-    font-weight: 600;
-    color: var(--or);
-    letter-spacing: 0.06em;
-    line-height: 1.3;
-    margin-bottom: 32px;
-  }
-
-  .section-texte {
-    font-size: clamp(16px, 1.8vw, 19px);
-    font-weight: 300;
-    color: var(--texte);
-    line-height: 1.85;
-    margin-bottom: 24px;
-  }
-
-  .section-texte + .section-texte { margin-top: 8px; }
-
-  .accent {
-    color: var(--or-clair);
-    font-style: italic;
-  }
-
-  /* ILLUSTRATION */
-  .illustration-wrap {
-    max-width: 960px;
-    margin: 0 auto 100px;
-    padding: 0 24px;
-  }
-
-  .illustration-wrap img {
-    width: 100%;
-    display: block;
-    border: 1px solid var(--bordure);
-  }
-
-  /* LISTE */
-  .liste-forces {
-    list-style: none;
-    margin: 32px 0 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .liste-forces li {
-    display: flex;
-    gap: 16px;
-    font-size: clamp(15px, 1.6vw, 18px);
-    font-weight: 300;
-    color: var(--texte);
-    line-height: 1.6;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--bordure);
-  }
-
-  .liste-forces li::before {
-    content: '◆';
-    color: var(--or);
-    font-size: 10px;
-    margin-top: 6px;
-    flex-shrink: 0;
-    opacity: 0.7;
-  }
-
-  /* CE QUE CE N'EST PAS */
-  .grille-negatif {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    margin: 32px 0;
-    border: 1px solid var(--bordure);
-  }
-
-  .negatif-item {
-    background: var(--obsidienne-2);
-    padding: 24px 28px;
-    font-size: clamp(14px, 1.5vw, 16px);
-    font-weight: 300;
-    color: var(--texte-muted);
-    letter-spacing: 0.02em;
-  }
-
-  .negatif-item::before {
-    content: '×  ';
-    color: var(--or-sombre);
-    font-family: 'Cinzel', serif;
-  }
-
-  /* SEUIL */
-  .seuil {
-    background: var(--obsidienne-3);
-    border: 1px solid var(--bordure);
-    border-left: 3px solid var(--or);
-    padding: 56px 64px;
-    margin: 0 24px 100px;
-    max-width: 780px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-  }
-
-  .seuil-titre {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(18px, 2.5vw, 24px);
-    font-weight: 600;
-    color: var(--or);
-    letter-spacing: 0.1em;
-    margin-bottom: 32px;
-  }
-
-  .seuil-texte {
-    font-size: clamp(16px, 1.8vw, 19px);
-    font-weight: 300;
-    font-style: italic;
-    color: var(--texte);
-    line-height: 1.9;
-    margin-bottom: 20px;
-  }
-
-  .seuil-conclusion {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(13px, 1.5vw, 15px);
-    letter-spacing: 0.15em;
-    color: var(--or);
-    margin: 36px 0 40px;
-  }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--bordure);
-    padding: 48px 24px;
-    text-align: center;
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--texte-muted);
-    text-transform: uppercase;
-  }
-
-  footer .footer-logo {
-    font-size: 20px;
-    color: var(--or);
-    margin-bottom: 16px;
-    display: block;
-  }
-
-  /* ANIMATIONS */
-  @media (prefers-reduced-motion: no-preference) {
-    .hero-content > * {
-      opacity: 0;
-      transform: translateY(20px);
-      animation: apparition 0.9s ease forwards;
-    }
-    .hero-eyebrow { animation-delay: 0.1s; }
-    .hero-title { animation-delay: 0.25s; }
-    .hero-subtitle { animation-delay: 0.4s; }
-    .hero-accroche { animation-delay: 0.55s; }
-    .ligne-or { animation-delay: 0.65s; }
-    .hero-phrase-cle { animation-delay: 0.75s; }
-    .btn-principal { animation-delay: 0.9s; }
-
-    @keyframes apparition {
-      to { opacity: 1; transform: translateY(0); }
-    }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 640px) {
-    nav { padding: 16px 20px; }
-    .nav-links { display: none; }
-    .grille-negatif { grid-template-columns: 1fr; }
-    .seuil { padding: 36px 24px; }
-  }
+/* Responsive */
+@media (max-width: 860px) {
+  .m7fa-header { height: var(--header-h-mob); }
+  .m7fa-nav, .m7fa-cta { display: none; }
+  .m7fa-burger { display: flex; }
+  .m7fa-drawer { display: flex; top: var(--header-h-mob); }
+  .m7fa-header-spacer { height: var(--header-h-mob); }
+  .page-wrap { padding: 2.5rem 1.25rem 6rem; }
+}
+@media (max-width: 480px) {
+  .m7fa-header__inner { padding: 0 1.25rem; }
+  .m7fa-logo__subtitle { display: none; }
+  .not-list { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; }
+}
 </style>
-<script src="nav.js" defer></script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
 <body>
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-gradient"></div>
-  <div class="hero-content">
-    <p class="hero-eyebrow">Modèle des 7 Forces Archétypiques</p>
-    <h1 class="hero-title">M7FA</h1>
-    <p class="hero-subtitle">La Boussole Archétypique · 7 Forces · 3 Axes · 1 Boussole</p>
-    <p class="hero-accroche">
-      Il arrive que le monde cesse d'être lisible.<br>
-      Les repères se brouillent. Les récits se contredisent.<br>
-      Les explications s'accumulent sans jamais vraiment éclairer.<br><br>
-      Nous vivons dans un monde saturé de données, de discours, de modèles —<br>
-      et pourtant, de plus en plus de personnes éprouvent un même sentiment :<br>
-      <em>quelque chose manque encore pour rendre le réel lisible.</em>
-    </p>
-    <div class="ligne-or"></div>
-    <p class="hero-phrase-cle">
-      Ce lieu ne propose ni réponses toutes faites, ni doctrine à adopter, ni vérité à croire.<br>
-      <a href="#modele">Il propose une grille de lecture.</a>
-    </p>
-    <a href="#modele" class="btn-principal">Découvrir le modèle</a>
+<header class="m7fa-header" id="m7fa-header" role="banner">
+  <div class="m7fa-header__inner">
+    <a href="/" class="m7fa-logo" aria-label="M7FA — Accueil">
+      <div class="m7fa-logo__mark" aria-hidden="true"><svg viewBox="0 0 791.68701 737.73431" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <g transform="translate(970.19551,2415.4918)">
+    <path class="logo-path" d="m -757.02,-2137.55 c 4.93,-7.7 9.56,-15.15 14.41,-22.46 19.15,-28.88 39.02,-57.21 63.68,-81.8 6.46,-6.45 7.8,-7.35 15.44,-2.27 14.37,9.57 28.52,19.58 42.06,30.29 19.83,15.7 39.07,32.13 58.46,48.38 3.26,2.73 5.53,1.78 7.34,-1.17 13.99,-22.83 27.67,-45.85 41.86,-68.55 23.19,-37.12 46.64,-74.09 70.15,-111.01 2.51,-3.94 1.16,-5.27 -2.31,-7.01 -22.36,-11.19 -46.32,-16.64 -70.93,-19.2 -16.2,-1.68 -32.53,-2.95 -48.8,-2.87 -46.34,0.22 -91.93,6.26 -136.09,20.88 -5.37,1.78 -10.31,5.12 -15.14,8.22 -3.51,2.25 -6.42,1.99 -8.77,-1.62 -3.79,-5.84 -7.67,-11.63 -11.54,-17.42 -2.3,-3.44 -1.43,-6.86 2.97,-8.8 16.27,-7.2 32.31,-15.11 49.04,-21.03 31.51,-11.15 64.21,-17.17 97.6,-19.39 40.26,-2.67 80.2,-0.9 119.39,9.37 26.63,6.97 51,19.24 74.26,33.79 3.1,1.94 6.32,3.71 9.3,5.83 3.66,2.6 4.04,6.58 0.49,9.17 -15.89,11.64 -25.74,28.19 -35.93,44.32 -35.93,56.83 -71.6,113.83 -107.27,170.82 -10.75,17.18 -21.12,34.59 -31.78,51.83 -5.24,8.48 -10.89,16.71 -16.1,25.2 -31.76,51.75 -63.83,103.32 -95.02,155.41 -21.03,35.11 -41.24,70.74 -60.91,106.63 -9.98,18.2 -18.09,37.44 -26.74,56.35 -1.83,4 -2.7,8.57 -3.33,12.97 -0.78,5.38 0.29,10.22 5.8,13.2 1.21,0.66 2.36,3.16 2.03,4.42 -0.32,1.23 -2.56,2.76 -3.97,2.77 -17.48,0.18 -34.97,0.19 -52.45,0.03 -4.35,-0.04 -5.64,-3.02 -3.75,-6.88 7.39,-15.07 14.39,-30.34 22.04,-45.27 18.13,-35.4 35.19,-71.44 55.14,-105.79 35.42,-61.02 72.6,-121.02 109.18,-181.36 14.98,-24.71 30.35,-49.19 45.52,-73.79 4.08,-6.62 4.1,-6.7 -1.95,-11.6 -24.43,-19.79 -48.85,-39.6 -73.37,-59.27 -10.02,-8.04 -10.36,-7.76 -18.52,2.04 -25.36,30.43 -45.87,64.09 -65.47,98.35 -4.21,7.36 -7.91,15.03 -12.23,22.33 -1.18,1.99 -3.8,4.41 -5.68,4.33 -1.98,-0.08 -4.48,-2.52 -5.69,-4.56 -24.1,-40.45 -47.76,-81.17 -72.17,-121.44 -9.3,-15.34 -20.23,-29.69 -30.44,-44.48 -1,-1.45 -2.17,-2.78 -3.96,-5.05 -3.91,5.88 -7.54,10.96 -10.79,16.28 -24.13,39.44 -39.44,82.09 -45.59,127.9 -1.63,12.17 -2.32,24.53 -2.57,36.82 -1.12,55.81 12.06,108.34 37.73,157.73 5.82,11.19 12.9,21.74 19.58,32.47 1.38,2.21 3.36,4.16 5.4,5.81 3.5,2.84 3.27,5.65 0.89,9.05 -5.05,7.19 -10.09,14.38 -14.83,21.77 -2.81,4.39 -6.15,4.94 -9.37,0.85 -31.63,-40.13 -54.02,-84.91 -67.89,-134.06 -7.45,-26.4 -10.37,-53.34 -11.42,-80.66 -0.48,-12.47 0.14,-24.83 1.14,-37.16 1,-12.41 2.77,-24.82 5.16,-37.04 11.72,-59.82 37.16,-113.14 76.61,-159.7 3.33,-3.93 6.83,-7.74 10.27,-11.58 3.77,-4.2 7.43,-4.43 11.34,0.21 10.93,12.97 22.17,25.76 32.2,39.41 26.63,36.27 49.79,74.8 72.15,113.8 0.74,1.3 1.47,2.61 2.29,3.86 0.25,0.38 0.77,0.58 1.89,1.38 z"/>
+    <path class="logo-path" d="m -482.37,-1938.01 c 2.96,0.15 4.73,0.32 6.5,0.32 27.48,0.03 54.96,0.07 82.43,0.03 2.65,0 5.29,-0.49 7.94,-0.71 4.9,-0.41 7.69,2.51 5.98,7 -3.49,9.17 -7.37,18.2 -11.33,27.18 -1.34,3.05 -4.64,3.69 -6.61,1.5 -4.43,-4.92 -10.17,-4.79 -15.68,-4.84 -27.98,-0.26 -55.95,-0.26 -83.93,-0.16 -1.81,0 -4.42,1.2 -5.29,2.66 -10.31,17.3 -20.36,34.75 -30.44,52.19 -0.63,1.09 -0.87,2.4 -1.52,4.25 2.28,0.11 4.04,0.27 5.79,0.27 25.15,-0.01 50.29,0 75.44,-0.12 3.97,-0.02 7.94,-0.66 11.9,-1.12 5.55,-0.65 8.34,2.11 6.45,7.22 -3.47,9.36 -7.35,18.57 -11.3,27.73 -1.41,3.26 -5.28,4.1 -7.31,1.48 -3.11,-4.02 -7.36,-4.56 -11.6,-4.59 -27.98,-0.17 -55.95,-0.05 -83.93,-0.21 -4.56,-0.03 -6.02,3.38 -6.69,6.19 -1.64,6.83 -6.69,11.48 -9.8,17.32 -15.25,28.65 -30.85,57.11 -45.97,85.83 -2.57,4.88 -3.84,10.59 -4.83,16.07 -0.38,2.1 1.71,4.65 2.67,7 0.76,1.86 2.17,3.81 1.96,5.56 -0.11,0.9 -3.1,2.07 -4.8,2.09 -17.82,0.15 -35.64,0.15 -53.45,0 -1.7,-0.01 -3.39,-1.34 -5.09,-2.05 0.8,-1.82 1.1,-4.52 2.5,-5.33 8.44,-4.9 12.77,-13 16.99,-21.11 15.43,-29.69 30.26,-59.7 46.09,-89.17 15.2,-28.29 30.98,-56.29 47.2,-84.01 24.86,-42.48 50.2,-84.68 75.58,-126.86 11.14,-18.52 23,-36.61 34.33,-55.03 24.66,-40.09 48.89,-80.46 73.86,-120.35 26.22,-41.89 53.1,-83.38 79.72,-125.02 6.64,-10.38 8.75,-12.28 18.69,-1.47 20.4,22.19 37.28,46.84 51.98,73.05 18.19,32.44 31.94,66.71 39.76,103.05 4.42,20.54 10.49,40.96 9.58,62.42 -0.42,9.94 0.28,19.93 -0.07,29.87 -1.43,40.24 -9.42,79.17 -23.77,116.81 -13.55,35.57 -32.07,68.34 -55.3,98.46 -4.06,5.27 -8.2,10.5 -12.7,15.39 -1.31,1.43 -4.06,2.34 -5.99,2.12 -1.3,-0.14 -2.79,-2.51 -3.41,-4.17 -3.17,-8.52 -6.23,-17.1 -8.99,-25.76 -0.61,-1.93 -0.64,-4.86 0.42,-6.37 6.55,-9.35 14.14,-18.02 20.2,-27.66 23.52,-37.39 38.67,-78.07 45.36,-121.71 2.26,-14.75 2.55,-29.8 3.91,-44.7 0.39,-4.2 -1.05,-5.37 -5.23,-5.36 -58.95,0.12 -117.9,0.08 -176.86,0.08 -3,0 -6.06,0.41 -8.98,-0.07 -7.04,-1.14 -11.16,1.75 -14.74,7.81 -18.11,30.67 -36.61,61.1 -54.95,91.63 -0.83,1.38 -1.44,2.89 -2.67,5.38 z m 263.31,-138.82 c -5.94,-66.24 -28.54,-125.29 -68,-179.47 -38.47,59.97 -75.41,119.07 -112.45,179.47 h 180.44 z"/>
+  </g>
+</svg></div>
+      <div class="m7fa-logo__wordmark">
+        <span class="m7fa-logo__title">M7FA</span>
+        <span class="m7fa-logo__subtitle">7 Forces · 3 Axes</span>
+      </div>
+    </a>
+    <nav class="m7fa-nav" aria-label="Navigation principale">
+      <a href="/modele" class="m7fa-nav__item">Le Modèle</a>
+      <a href="/forces" class="m7fa-nav__item">Les Forces</a>
+      <div class="m7fa-nav__sep" role="separator" aria-hidden="true"></div>
+      <a href="/personnages" class="m7fa-nav__item">Personnages</a>
+      <a href="/ethique" class="m7fa-nav__item">Éthique</a>
+    </nav>
+    <a href="/modele" class="m7fa-cta">Entrer</a>
+    <button class="m7fa-burger" id="m7fa-burger" aria-controls="m7fa-drawer" aria-expanded="false" aria-label="Ouvrir le menu">
+      <span class="m7fa-burger__bar"></span>
+      <span class="m7fa-burger__bar"></span>
+      <span class="m7fa-burger__bar"></span>
+    </button>
   </div>
+</header>
+<nav class="m7fa-drawer" id="m7fa-drawer" aria-label="Menu mobile" aria-hidden="true">
+  <a href="/modele" class="m7fa-nav__item">Le Modèle</a>
+  <a href="/forces" class="m7fa-nav__item">Les Forces</a>
+  <a href="/personnages" class="m7fa-nav__item">Personnages</a>
+  <a href="/ethique" class="m7fa-nav__item">Éthique</a>
+  <a href="/modele" class="m7fa-cta">Entrer dans le Modèle</a>
+</nav>
+<div class="m7fa-header-spacer" aria-hidden="true"></div>
+<main>
+  <div class="page-wrap">
+    
+<div class="hero">
+  <span class="eyebrow">Modèle des 7 Forces Archétypiques</span>
+  <h1>M7FA</h1>
+  <p class="tagline">La Boussole Archétypique &nbsp;·&nbsp; 7 Forces &nbsp;·&nbsp; 3 Axes &nbsp;·&nbsp; 1 Boussole</p>
+  <div class="hero-body">
+    <p>Il arrive que le monde cesse d'être lisible.<br>
+    Les repères se brouillent. Les récits se contredisent.<br>
+    Les explications s'accumulent sans jamais vraiment éclairer.</p>
+    <p>Nous vivons dans un monde saturé de données, de discours, de modèles —<br>
+    et pourtant, de plus en plus de personnes éprouvent un même sentiment :<br>
+    <em>quelque chose manque encore pour rendre le réel lisible.</em></p>
+    <p>Ce lieu ne propose ni réponses toutes faites, ni doctrine à adopter, ni vérité à croire.<br>
+    Il propose une grille de lecture.</p>
+  </div>
+  <a href="/modele" class="hero-cta">Découvrir le modèle →</a>
 </div>
 
-<!-- ILLUSTRATION -->
-<div class="illustration-wrap">
-  <img src="hero.png" alt="Les 7 Forces Archétypiques — Chaos, Ordre, Volonté, Lien, Savoir, Épreuve, Transcendance">
+<div class="content-section">
+  <span class="eyebrow">Le modèle</span>
+  <h2>Une boussole symbolique</h2>
+  <p>Le Modèle des 7 Forces Archétypiques est une boussole symbolique. Il ne cherche pas à dire ce qu'il faut penser, mais à rendre visibles les forces fondamentales qui structurent le réel : dans les sociétés, les civilisations, les récits, les crises, et jusque dans nos propres trajectoires intérieures.</p>
+  <p>Ces forces ne sont ni morales, ni idéologiques. Elles ne sont ni bonnes, ni mauvaises. Elles agissent, entrent en tension, s'équilibrent, se déforment. Le modèle ne dit pas qui a raison. Il montre ce qui domine, ce qui manque, ce qui compense, ce qui déborde.</p>
 </div>
 
-<!-- BOUSSOLE SYMBOLIQUE -->
-<section id="modele">
-  <p class="section-eyebrow">Le modèle</p>
-  <h2 class="section-titre">Une boussole symbolique</h2>
-  <p class="section-texte">
-    Le Modèle des 7 Forces Archétypiques est une boussole symbolique. Il ne cherche pas à dire ce qu'il faut penser, mais à rendre visibles les forces fondamentales qui structurent le réel : dans les sociétés, les civilisations, les récits, les crises, et jusque dans nos propres trajectoires intérieures.
-  </p>
-  <p class="section-texte">
-    Ces forces ne sont <span class="accent">ni morales, ni idéologiques. Elles ne sont ni bonnes, ni mauvaises.</span> Elles agissent, entrent en tension, s'équilibrent, se déforment. Le modèle ne dit pas qui a raison. Il montre ce qui domine, ce qui manque, ce qui compense, ce qui déborde.
-  </p>
-</section>
-
-<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
-
-<!-- CE QUE VOUS TROUVEREZ -->
-<section id="forces">
-  <p class="section-eyebrow">Ce que vous trouverez ici</p>
-  <h2 class="section-titre">Un outil de lucidité</h2>
-  <ul class="liste-forces">
+<div class="content-section">
+  <span class="eyebrow">Ce que vous trouverez ici</span>
+  <h2>Un outil de lucidité</h2>
+  <ul class="m7fa-list">
     <li>Une cartographie symbolique du réel, fondée sur sept forces archétypiques fondamentales</li>
     <li>Une méthode de lecture applicable aux civilisations, aux systèmes sociaux et aux crises contemporaines</li>
     <li>Un cadre rigoureux distinguant ce qui est attesté, interprété, ou extrapolé symboliquement</li>
     <li>Une attention constante portée aux risques de simplification, de manipulation et d'ingénierie sociale</li>
   </ul>
-  <p class="section-texte" style="font-family:'Cinzel',serif; font-size:16px; letter-spacing:0.06em; color:var(--or);">
-    Le M7FA n'est pas un outil de pouvoir. Il est un outil de lucidité.
-  </p>
-</section>
-
-<div class="sep"><div class="sep-line"></div><div class="sep-diamant"></div><div class="sep-line"></div></div>
-
-<!-- CE QUE CE N'EST PAS -->
-<section>
-  <p class="section-eyebrow">Clarté épistémique</p>
-  <h2 class="section-titre">Ce que ce modèle n'est pas</h2>
-  <div class="grille-negatif">
-    <div class="negatif-item">Une religion</div>
-    <div class="negatif-item">Une spiritualité à suivre</div>
-    <div class="negatif-item">Une psychologie de développement personnel</div>
-    <div class="negatif-item">Un système clos</div>
-  </div>
-  <p class="section-texte">
-    Le modèle ne demande pas l'adhésion. Il supporte la critique. Il est conçu pour être mis à l'épreuve du réel.
-  </p>
-</section>
-
-<!-- SEUIL -->
-<div class="seuil" id="seuil">
-  <h2 class="seuil-titre">Franchir le seuil</h2>
-  <p class="seuil-texte">
-    Entrer ici, c'est accepter une chose simple mais exigeante : regarder le monde sans chercher à le réduire, et sans renoncer à le comprendre.
-  </p>
-  <p class="seuil-texte">
-    Si vous cherchez une vérité à défendre, ce site vous décevra.<br>
-    Si vous cherchez un outil pour lire les dynamiques profondes à l'œuvre, alors vous êtes au bon endroit.
-  </p>
-  <p class="seuil-conclusion">Le seuil est franchi. La lecture peut commencer.</p>
-  <a href="modele.html" class="btn-principal">Découvrir le modèle en une page →</a>
+  <p>Le M7FA n'est pas un outil de pouvoir. Il est un outil de lucidité.</p>
 </div>
 
-<footer>
-  <span class="footer-logo">M7FA</span>
-  Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces · 3 Axes · 1 Boussole
-</footer>
+<div class="content-section">
+  <span class="eyebrow">Clarté épistémique</span>
+  <h2>Ce que ce modèle n'est pas</h2>
+  <div class="not-list">
+    <div class="not-item">Une religion</div>
+    <div class="not-item">Une spiritualité à suivre</div>
+    <div class="not-item">Du développement personnel</div>
+    <div class="not-item">Un système clos</div>
+  </div>
+  <p>Le modèle ne demande pas l'adhésion. Il supporte la critique. Il est conçu pour être mis à l'épreuve du réel.</p>
+</div>
 
+<div class="content-section">
+  <h2>Franchir le seuil</h2>
+  <p>Entrer ici, c'est accepter une chose simple mais exigeante : regarder le monde sans chercher à le réduire, et sans renoncer à le comprendre.</p>
+  <p>Si vous cherchez une vérité à défendre, ce site vous décevra.<br>
+  Si vous cherchez un outil pour lire les dynamiques profondes à l'œuvre, alors vous êtes au bon endroit.</p>
+  <p>Le seuil est franchi. La lecture peut commencer.</p>
+  <a href="/modele" class="hero-cta">Découvrir le modèle en une page →</a>
+</div>
+
+    <nav class="page-nav"><span></span><a href="/modele">Le Modèle →</a></nav>
+  </div>
+</main>
+<footer class="site-footer">
+  <p>M7FA &mdash; Modèle des 7 Forces Archétypiques &nbsp;·&nbsp; 7 Forces &nbsp;·&nbsp; 3 Axes &nbsp;·&nbsp; 1 Boussole</p>
+</footer>
+<script>
+(function(){
+  var header=document.getElementById('m7fa-header'),
+      burger=document.getElementById('m7fa-burger'),
+      drawer=document.getElementById('m7fa-drawer');
+  function onScroll(){header.classList.toggle('is-scrolled',window.scrollY>20);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  function open(){burger.setAttribute('aria-expanded','true');drawer.setAttribute('aria-hidden','false');drawer.classList.add('is-open');document.body.style.overflow='hidden';}
+  function close(){burger.setAttribute('aria-expanded','false');drawer.setAttribute('aria-hidden','true');drawer.classList.remove('is-open');document.body.style.overflow='';}
+  burger.addEventListener('click',function(){burger.getAttribute('aria-expanded')==='true'?close():open();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  window.matchMedia('(min-width:861px)').addEventListener('change',function(e){if(e.matches)close();});
+})();
+</script>
 </body>
 </html>
