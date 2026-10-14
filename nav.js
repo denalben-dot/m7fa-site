@@ -131,7 +131,9 @@
   const slug = path.split('/').pop().replace('.html', '') || 'index';
   const pageMap = {
     index: '', questions: 'q', forces: 'f',
-    modele: 'm', applications: 'a', ethique: ''
+    modele: 'm', applications: 'a', ethique: '',
+    'tome-1': 't',
+    'morphoscope': 'mo'
   };
   const active = pageMap[slug] || '';
 
@@ -141,6 +143,8 @@
     { href: 'forces.html',    label: 'Les Forces',  key: 'f' },
     { href: 'modele.html',    label: 'Le Modèle',   key: 'm' },
     { href: 'applications.html', label: 'Applications', key: 'a' },
+    { href: 'tome-1/',        label: 'Tome I',      key: 't' },
+    { href: 'morphoscope/',  label: 'Morphoscope', key: 'mo' },
   ];
 
   const navLinks = links.map(l =>
