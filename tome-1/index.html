@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Tome I du M7FA — le texte est achevé et scellé ; sa mise en page, son impression et sa publication sont en préparation. Présentation, sommaire et extrait.">
+<title>M7FA — Tome I</title>
+<base href="/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+:root{--or:#C49E59;--obs:#111111;--ivoire:#F8F5EE;--fd:'Cinzel',serif;--fb:'Cormorant Garamond',serif;--nav:68px;--t:.26s cubic-bezier(.4,0,.2,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obs);color:var(--ivoire);font-family:var(--fb);font-size:1.1rem;line-height:1.8;padding-top:var(--nav);}
+.wrap{max-width:760px;margin:0 auto;padding:4rem 2rem 8rem;}
+.h1{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ivoire);margin-bottom:1.2rem;}
+.intro{font-family:var(--fb);font-size:1.1rem;color:rgba(248,245,238,.6);line-height:1.9;margin-bottom:2.5rem;}
+.sh{font-family:var(--fd);font-size:.88rem;color:var(--or);letter-spacing:.06em;margin:2.8rem 0 .7rem;padding-top:2.2rem;border-top:1px solid rgba(196,158,89,.12);}
+.sh:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+.sp{font-family:var(--fb);font-size:1.05rem;color:rgba(248,245,238,.72);line-height:1.9;margin-bottom:1rem;}
+.sq{font-family:var(--fb);font-size:1.05rem;color:rgba(248,245,238,.5);line-height:1.9;margin-bottom:1rem;font-style:italic;}
+.sk{font-family:var(--fb);font-size:1.15rem;color:var(--ivoire);line-height:1.85;margin-bottom:1.2rem;}
+.sk strong{color:var(--or);}
+.btn{display:inline-block;font-family:var(--fd);font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);border:1px solid rgba(196,158,89,.42);padding:.72rem 1.4rem;text-decoration:none;transition:background var(--t),color var(--t);margin-right:.8rem;margin-bottom:.8rem;}
+.btn:hover{background:var(--or);color:var(--obs);}
+.btn.sec{color:rgba(248,245,238,.45);border-color:rgba(196,158,89,.18);}
+.btn.sec:hover{color:var(--or);border-color:rgba(196,158,89,.4);background:transparent;}
+footer{border-top:1px solid rgba(196,158,89,.08);padding:1.75rem;text-align:center;}
+footer p{font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,245,238,.18);}
+
+/* Tome I — ouverture */
+.tome-over{font-family:var(--fd);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(196,158,89,.55);margin-bottom:1rem;}
+.tome-title{font-family:var(--fd);font-size:clamp(2.4rem,7vw,4rem);font-weight:700;color:var(--or);line-height:1.05;margin-bottom:.8rem;}
+.tome-tag{font-family:var(--fb);font-size:clamp(1.2rem,3vw,1.5rem);color:rgba(248,245,238,.7);font-style:italic;line-height:1.5;margin-bottom:2.5rem;}
+
+/* État de publication */
+.status{border:1px solid rgba(196,158,89,.22);padding:1.3rem 1.5rem;margin:.5rem 0 1rem;background:rgba(196,158,89,.03);}
+.status-label{font-family:var(--fd);font-size:.58rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(196,158,89,.6);display:block;margin-bottom:.6rem;}
+.status p{font-family:var(--fb);font-size:1rem;color:rgba(248,245,238,.78);line-height:1.8;}
+.status strong{color:var(--or);font-weight:400;}
+.status .steps{font-family:var(--fb);font-size:.95rem;color:rgba(248,245,238,.5);font-style:italic;margin-top:.6rem;}
+
+/* Extrait */
+.excerpt{border-left:1px solid rgba(196,158,89,.3);padding:.2rem 0 .2rem 1.5rem;margin:1.2rem 0 .8rem;}
+.excerpt p{font-family:var(--fb);font-size:1.12rem;color:rgba(248,245,238,.85);line-height:1.9;font-style:italic;margin-bottom:.9rem;}
+.excerpt .src{font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,158,89,.45);font-style:normal;}
+
+/* Sommaire */
+.toc-part{font-family:var(--fd);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin:2.4rem 0 .4rem;padding-top:1.4rem;border-top:1px solid rgba(196,158,89,.12);}
+.toc-part:first-of-type{padding-top:0;border-top:none;margin-top:1rem;}
+.toc-part .pt-sub{display:block;font-family:var(--fb);font-size:.9rem;letter-spacing:0;text-transform:none;color:rgba(248,245,238,.4);font-style:italic;margin-top:.25rem;}
+.toc-row{display:flex;gap:1rem;align-items:baseline;padding:.5rem 0;border-bottom:1px solid rgba(196,158,89,.06);}
+.toc-row:last-child{border-bottom:none;}
+.toc-row .n{font-family:var(--fd);font-size:.66rem;letter-spacing:.08em;color:rgba(196,158,89,.5);min-width:3.1rem;flex-shrink:0;}
+.toc-row .ttl{font-family:var(--fb);font-size:1.05rem;color:rgba(248,245,238,.82);line-height:1.5;}
+.toc-row .ttl em{display:block;font-size:.9rem;color:rgba(248,245,238,.42);font-style:italic;margin-top:.1rem;}
+.toc-matter{font-family:var(--fb);font-size:1rem;color:rgba(248,245,238,.6);line-height:1.6;}
+
+.note{font-family:var(--fb);font-size:.92rem;color:rgba(248,245,238,.4);font-style:italic;line-height:1.8;margin-top:1rem;}
+@media(max-width:600px){.wrap{padding:2.5rem 1.25rem 5rem;}.toc-row .n{min-width:2.6rem;}}
+</style>
+</head>
+<body>
+
+<main><div class="wrap">
+
+<div class="tome-over">Modèle des 7 Forces Archétypiques</div>
+<h1 class="tome-title">Tome I</h1>
+<p class="tome-tag">Apprendre à lire une configuration — reconnaître les Forces à l'œuvre derrière les situations.</p>
+
+<h2 class="sh">De quoi parle ce livre</h2>
+<p class="sk">Le M7FA ne cherche pas à dire <strong>quel type de personne</strong> vous avez devant vous. Il cherche à voir <strong>ce qui se passe</strong> dans une situation : ce qui s'ouvre, ce qui tient, ce qui oriente, ce qui lie, ce qui éclaire, ce qui éprouve, ce qui dépasse.</p>
+<p class="sp">Ce premier Tome pose le regard, présente les sept Forces une à une, puis l'instrument qui permet de les lire ensemble. Ce n'est pas une doctrine à adopter : c'est une boussole symbolique, une manière d'orienter l'attention — qui doit toujours laisser celui qui la reçoit plus libre qu'il ne l'était en entrant.</p>
+<p class="sp">Il s'adresse à un lecteur qui découvre le modèle. On n'y demande de croire à rien : on y propose d'essayer un regard, puis d'en juger par soi-même.</p>
+
+<h2 class="sh">État de publication</h2>
+<div class="status">
+  <span class="status-label">En préparation — non encore disponible</span>
+  <p>Le texte du Tome I est <strong>achevé et scellé</strong> dans sa version de lecture. Sa <strong>mise en page</strong>, son <strong>épreuve imprimée</strong> et sa <strong>publication</strong> restent à réaliser.</p>
+  <p class="steps">Composition intégrale → épreuve imprimée → publication. L'ouvrage n'est pas encore en vente ; cette page sera mise à jour lorsqu'il le sera.</p>
+</div>
+
+<h2 class="sh">Un court extrait</h2>
+<div class="excerpt">
+  <p>« Prenez une situation que vous connaissez bien. Une organisation que vous avez observée de près, une relation qui a changé de nature, une période de votre vie où quelque chose s'est déplacé. Vous pouvez souvent décrire les personnes impliquées — leurs caractères, leurs intentions, leurs qualités et leurs défauts. Ce que vous décrivez avec plus de difficulté, c'est ce qui se passait <em>entre</em> elles, ou ce qui a rendu possible — ou impossible — un certain résultat. »</p>
+  <span class="src">Chapitre 1 — Pourquoi un modèle des Forces ?</span>
+</div>
+
+<h2 class="sh">Sommaire</h2>
+
+<div class="toc-matter" style="margin-bottom:.6rem;">Avant-propos · Notice — <em>Comment lire ce livre</em></div>
+
+<div class="toc-part">Partie I — Pourquoi un nouveau modèle ?</div>
+<div class="toc-row"><span class="n">Ch. 1</span><span class="ttl">Pourquoi un modèle des Forces ?</span></div>
+<div class="toc-row"><span class="n">Ch. 2</span><span class="ttl">De l'hypothèse à la méthode</span></div>
+<div class="toc-row"><span class="n">Ch. 3</span><span class="ttl">Comment changer de regard</span></div>
+
+<div class="toc-part">Partie II — Les sept Forces</div>
+<div class="toc-row"><span class="n">Ch. 4</span><span class="ttl">Chaos<em>Que devient une situation lorsqu'elle n'a pas encore trouvé sa forme ?</em></span></div>
+<div class="toc-row"><span class="n">Ch. 5</span><span class="ttl">Ordre<em>Comment une forme devient-elle capable de durer ?</em></span></div>
+<div class="toc-row"><span class="n">Ch. 6</span><span class="ttl">Volonté<em>Comment une direction devient-elle réellement assumée ?</em></span></div>
+<div class="toc-row"><span class="n">Ch. 7</span><span class="ttl">Lien<em>À partir de quand deux devenirs deviennent-ils réellement interdépendants ?</em></span></div>
+<div class="toc-row"><span class="n">Ch. 8</span><span class="ttl">Savoir<em>Qu'est-ce qui rend une situation lisible ?</em></span></div>
+<div class="toc-row"><span class="n">Ch. 9</span><span class="ttl">Épreuve<em>Qu'est-ce qui se joue lorsque ce qui nous constitue est mis en jeu ?</em></span></div>
+<div class="toc-row"><span class="n">Ch. 10</span><span class="ttl">Transcendance<em>Qu'est-ce qui continue de nous gouverner lorsque plus rien, autour de nous, ne le soutient ?</em></span></div>
+
+<div class="toc-part">Partie III — La syntaxe des Forces</div>
+<div class="toc-row"><span class="n">Ch. 11</span><span class="ttl">Comment les Forces se composent</span></div>
+<div class="toc-row"><span class="n">Ch. 12</span><span class="ttl">Morphologies et configurations types</span></div>
+<div class="toc-row"><span class="n">Ch. 13</span><span class="ttl">Lectures complexes : trois cas annotés</span></div>
+
+<div class="toc-part">Partie IV — L'Instrument</div>
+<div class="toc-row"><span class="n">Ch. 14</span><span class="ttl">Le Morphoscope</span></div>
+<div class="toc-row"><span class="n">Ch. 15</span><span class="ttl">Les questions de discernement</span></div>
+<div class="toc-row"><span class="n">Ch. 16</span><span class="ttl">Les niveaux de confiance</span></div>
+<div class="toc-row"><span class="n">Ch. 17</span><span class="ttl">Le Miroiroscope</span></div>
+
+<div class="toc-part">Partie V — L'épistémologie du M7FA</div>
+<div class="toc-row"><span class="n">Ch. 18</span><span class="ttl">Pourquoi certaines phrases sont canoniques</span></div>
+<div class="toc-row"><span class="n">Ch. 19</span><span class="ttl">Comment le modèle apprend sur lui-même</span></div>
+<div class="toc-row"><span class="n">Ch. 20</span><span class="ttl">Le domaine de validité du M7FA</span></div>
+
+<div class="toc-matter" style="margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid rgba(196,158,89,.12);">Annexe — <em>Lexique</em> · Postface — <em>Le Cycle II et ce qui reste ouvert</em></div>
+
+<p class="note">Le sommaire reflète le corpus de lecture du Tome I dans son état scellé. Les instruments du modèle — le Morphoscope, le Miroiroscope — et la bibliothèque de cas feront l'objet de développements ultérieurs.</p>
+
+<div style="margin-top:2.5rem;">
+<a href="forces.html" class="btn">Les sept Forces →</a>
+<a href="modele.html" class="btn sec">Le modèle →</a>
+</div>
+
+</div></main>
+
+<footer><p>M7FA — Modèle des 7 Forces Archétypiques · 7 Forces · 3 Axes · 1 Boussole</p></footer>
+
+<script src="nav.js"></script>
+</body>
+</html>

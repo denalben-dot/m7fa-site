@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="Le Morphoscope — prototype expérimental du M7FA : saisie manuelle d'une lecture, mise en forme sur l'ossature à trois axes, amorce du Miroiroscope. Tout reste dans votre navigateur.">
+<base href="/">
+<title>Le Morphoscope — M7FA</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--or:#C49E59;--obs:#111111;--ivoire:#F8F5EE;--fd:'Cinzel',serif;--fb:'Cormorant Garamond',serif;--nav:68px;--t:.26s cubic-bezier(.4,0,.2,1);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--obs);color:var(--ivoire);font-family:var(--fb);font-size:1.1rem;line-height:1.8;padding-top:var(--nav);}
+.wrap{max-width:760px;margin:0 auto;padding:4rem 2rem 2rem;}
+.h1{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--ivoire);margin-bottom:.9rem;}
+.badge{display:inline-block;font-family:var(--fd);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);border:1px solid rgba(196,158,89,.4);padding:.45rem .9rem;border-radius:2px;margin-bottom:1.6rem;}
+.intro{font-family:var(--fb);font-size:1.12rem;color:rgba(248,245,238,.62);line-height:1.9;margin-bottom:1.6rem;}
+.intro em{color:var(--ivoire);font-style:italic;}
+.warn{border:1px solid rgba(196,158,89,.22);border-left:2px solid var(--or);background:#171717;border-radius:3px;padding:1rem 1.2rem;margin-bottom:2.2rem;font-size:1rem;color:rgba(248,245,238,.78);line-height:1.8;}
+.warn strong{color:var(--ivoire);font-weight:600;}
+.sh{font-family:var(--fd);font-size:.88rem;color:var(--or);letter-spacing:.06em;margin:2.4rem 0 .7rem;padding-top:2rem;border-top:1px solid rgba(196,158,89,.12);}
+.sp{font-family:var(--fb);font-size:1.05rem;color:rgba(248,245,238,.72);line-height:1.9;margin-bottom:1rem;}
+.steps{list-style:none;counter-reset:s;margin:.5rem 0 1rem;}
+.steps li{counter-increment:s;position:relative;padding:.4rem 0 .4rem 2.2rem;font-size:1.05rem;color:rgba(248,245,238,.72);line-height:1.7;}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.4rem;width:1.5rem;height:1.5rem;border:1px solid rgba(196,158,89,.35);border-radius:50%;color:var(--or);font-family:var(--fd);font-size:.7rem;display:flex;align-items:center;justify-content:center;}
+.etats{list-style:none;margin:.4rem 0 1rem;}
+.etats li{padding:.35rem 0 .35rem 1.1rem;position:relative;font-size:1.03rem;color:rgba(248,245,238,.74);line-height:1.6;}
+.etats li::before{content:"—";position:absolute;left:0;color:rgba(196,158,89,.5);}
+.etats strong{color:var(--or);font-weight:400;}
+.appwrap{max-width:1200px;margin:1.5rem auto 0;padding:0 1rem;}
+.applabel{font-family:var(--fd);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(248,245,238,.38);text-align:center;margin-bottom:.7rem;}
+#morphoFrame{width:100%;border:1px solid rgba(196,158,89,.18);border-radius:5px;background:var(--obs);display:block;min-height:900px;}
+.btn{display:inline-block;font-family:var(--fd);font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);border:1px solid rgba(196,158,89,.42);padding:.72rem 1.4rem;text-decoration:none;transition:background var(--t),color var(--t);margin-top:1rem;}
+.btn:hover{background:var(--or);color:var(--obs);}
+.pn{display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(196,158,89,.1);}
+.pn a{font-family:var(--fd);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,245,238,.35);text-decoration:none;transition:color var(--t);}
+.pn a:hover{color:var(--or);}
+footer{border-top:1px solid rgba(196,158,89,.08);padding:1.75rem;text-align:center;margin-top:2rem;}
+footer p{font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(248,245,238,.18);line-height:1.8;}
+@media(max-width:600px){.wrap{padding:2.5rem 1.25rem 1.5rem;}}
+</style>
+</head>
+<body>
+
+<main><div class="wrap">
+  <h1 class="h1">Le Morphoscope</h1>
+  <span class="badge">Prototype expérimental — saisie manuelle d'une lecture</span>
+  <p class="intro">Le Morphoscope ne lit pas à votre place : <em>vous</em> saisissez une lecture — quelles Forces sont en présence, lesquelles structurent la situation, à quel titre vous les avancez — et l'instrument la met en forme sur l'ossature à trois axes du Schéma 14.1, Transcendance hors-axe, centre vide.</p>
+
+  <div class="warn">
+    <strong>Vos saisies restent en mémoire pendant la session.</strong> <strong>Aucune saisie n'est transmise par l'instrument.</strong> Les polices sont chargées depuis Google Fonts. Fermer ou recharger la page efface les moments saisis. Pour conserver une lecture, utilisez <em>Exporter (JSON)</em> ; pour la retrouver, <em>Importer</em>.
+  </div>
+
+  <h2 class="sh">Pour commencer</h2>
+  <ol class="steps">
+    <li>Nommez la <em>situation</em> lue (une scène, un moment — non un caractère).</li>
+    <li>Pour chaque Force, choisissez un <em>état de saisie</em> ; pour une Force retenue, précisez centralité, niveau et intensité.</li>
+    <li>La figure et la « lecture en clair » se mettent à jour à mesure.</li>
+    <li>Enregistrez ce moment, puis un second : une trajectoire s'ouvre, avec le relevé des déplacements.</li>
+    <li>Exportez le JSON pour conserver votre lecture.</li>
+  </ol>
+
+  <h2 class="sh">Les quatre états</h2>
+  <ul class="etats">
+    <li><strong>Non renseignée</strong> — le silence (par défaut) : la lecture ne dit rien de cette Force.</li>
+    <li><strong>Retenue</strong> — la lecture attribue la Force (niveau attesté / interprété / extrapolé).</li>
+    <li><strong>Indéterminée</strong> — la lecture a examiné puis suspend (niveau <em>indéterminé</em> du Tome).</li>
+    <li><strong>Exclue</strong> — la lecture écarte la Force, avec une raison. Écartée dans la lecture, jamais « disparue » du réel.</li>
+  </ul>
+
+  <h2 class="sh">Comparer dans le temps — amorce du Miroiroscope</h2>
+  <p class="sp">En enregistrant plusieurs moments, vous ouvrez une <em>trajectoire</em> : c'est une <strong style="color:var(--or);font-weight:400;">amorce du Miroiroscope</strong>, non l'instrument complet. Le relevé distingue ce qui est soutenu par la source, ce qui relève de l'interprétation, et les silences ; il décrit le déplacement de la <em>lecture</em>, jamais du réel, et ne transforme jamais une information manquante en disparition.</p>
+
+  <h2 class="sh">Conserver / reprendre</h2>
+  <p class="sp"><em>Exporter (JSON)</em> télécharge votre lecture complète (et la copie dans la zone de texte, si le téléchargement est indisponible) ; <em>Importer</em> la recharge ; <em>Exporter le Morphoscope (SVG)</em> enregistre la figure seule.</p>
+</div></main>
+
+<section class="appwrap">
+  <p class="applabel">L'instrument — saisie et figure</p>
+  <iframe id="morphoFrame" src="/morphoscope/instrument.html" title="Le Morphoscope — instrument de saisie" sandbox="allow-scripts allow-downloads" loading="lazy"></iframe>
+</section>
+
+<div class="wrap" style="padding-top:0;padding-bottom:0;">
+  <div class="pn"><a href="modele.html">← Le Modèle</a><a href="index.html">Accueil →</a></div>
+</div>
+
+<footer><p>M7FA — Modèle des 7 Forces Archétypiques · Le Morphoscope · prototype expérimental hors gel</p></footer>
+
+<script src="nav.js"></script>
+<script>
+/* Redimensionnement de l'iframe par postMessage — isolation complète (sandbox sans allow-same-origin).
+   On vérifie la fenêtre émettrice et le format du message avant d'agir. */
+(function(){
+  var f=document.getElementById('morphoFrame');
+  window.addEventListener('message',function(e){
+    if(!f || e.source!==f.contentWindow) return;                 // fenêtre émettrice vérifiée
+    var d=e.data;
+    if(!d || typeof d!=='object' || d.type!=='morphoscope:height'
+        || typeof d.height!=='number' || !isFinite(d.height)) return;   // format vérifié
+    f.style.height=Math.max(400, Math.min(d.height+24, 20000))+'px';    // borne de sécurité
+  });
+})();
+</script>
+</body>
+</html>
